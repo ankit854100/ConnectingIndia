@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "700851328148",
+    "firebase_url": "https://connecting-india-463d8.firebaseio.com",
+    "project_id": "connecting-india-463d8",
+    "storage_bucket": "connecting-india-463d8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:700851328148:android:eed3a09ba55aa897199081",
+        "android_client_info": {
+          "package_name": "com.anand.connectingindia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "700851328148-n6hlm29vs8ft2lfjl10ure1ntftvbrsd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCV9QLwTKyRil6mZ0c5NR8kc9alTTvL5yE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "700851328148-n6hlm29vs8ft2lfjl10ure1ntftvbrsd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
