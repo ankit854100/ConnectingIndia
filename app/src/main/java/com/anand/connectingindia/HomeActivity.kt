@@ -10,6 +10,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_home.*
 
+//original version
+
 class HomeActivity : AppCompatActivity() {
 
     lateinit var mAuth : FirebaseAuth
