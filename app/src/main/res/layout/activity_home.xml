@@ -6,20 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome to home activity"
-        android:textSize="20dp"
-        android:layout_centerHorizontal="true"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom"
+        android:id="@+id/fragmentContainer">
 
-    <Button
-        android:layout_width="323dp"
-        android:layout_height="40dp"
-        android:text="logout"
-        android:id="@+id/logoutButton"
-        android:background="@drawable/custom_button"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
+        <Button
+            android:layout_width="323dp"
+            android:layout_height="40dp"
+            android:text="logout"
+            android:id="@+id/logoutButton"
+            android:background="@drawable/custom_button"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
+
+    </FrameLayout>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom"
+        android:layout_alignParentBottom="true">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bottomNavigation"
+            app:itemIconTint="@drawable/bottom_nav_selector"
+            app:itemTextColor="@color/colorAccent"
+            app:labelVisibilityMode = "unlabeled"
+            android:background="?android:attr/windowBackground"
+            app:menu="@menu/bottom_nav_items"
+            app:itemBackground="@color/colorPrimary"
+            />
+    </com.google.android.material.appbar.AppBarLayout>
+
 
 </RelativeLayout>
