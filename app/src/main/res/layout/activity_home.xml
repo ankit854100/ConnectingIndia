@@ -19,7 +19,8 @@
             android:id="@+id/logoutButton"
             android:background="@drawable/custom_button"
             android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"/>
 
     </FrameLayout>
 
