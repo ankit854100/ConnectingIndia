@@ -37,7 +37,7 @@
             android:layout_width="323dp"
             android:layout_height="40dp"
             android:id="@+id/generateOtp"
-            android:text="generate otp"
+            android:text="LOGIN"
             android:layout_margin="5dp"
             android:background="@drawable/custom_button"/>
 
