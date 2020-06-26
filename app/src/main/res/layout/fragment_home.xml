@@ -11,4 +11,115 @@
         android:layout_height="match_parent"
         android:id="@+id/cardStackView"/>
 
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toolbar"
+        android:background="@drawable/transparent_background"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:layout_marginRight="10dp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_profile"
+                android:id="@+id/profileIcon"
+                android:tint="@color/colorPrimary"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:layout_marginRight="100dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Home"
+                    android:id="@+id/toolbarHome"
+                    android:textSize="15dp"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_margin="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/toolbarTrending"
+                    android:text="trending"
+                    android:textSize="15dp"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_margin="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="following"
+                    android:textSize="15dp"
+                    android:textColor="@color/colorPrimary"
+                    android:id="@+id/toolbarFollowing"
+                    android:layout_margin="8dp" />
+
+            </LinearLayout>
+
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_chat"
+                android:tint="@color/colorPrimary"
+                android:layout_marginRight="10dp"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+    
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        android:padding="5dp">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_chat"
+            android:background="@color/colorPrimary"
+            android:layout_marginBottom="5dp"
+            android:clickable="true"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_chat"
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:clickable="true"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_chat"
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="5dp"
+            android:clickable="true"/>
+
+
+    </LinearLayout>
 </RelativeLayout>

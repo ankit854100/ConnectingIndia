@@ -2,12 +2,14 @@ package com.anand.connectingindia.Fragments
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
 import android.widget.TextView
+//import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DiffUtil
 import com.anand.connectingindia.Adapter.CardStackAdapter
@@ -16,9 +18,11 @@ import com.anand.connectingindia.Model.Spot
 import com.anand.connectingindia.R
 import com.yuyakaido.android.cardstackview.*
 
+
 class HomeFragment : Fragment(), CardStackListener {
 
     private lateinit var cardStackView : CardStackView
+    private lateinit var toolbar: Toolbar
 //    private val manager by lazy { CardStackLayoutManager(context, this) }
     private lateinit var manager: CardStackLayoutManager
     private val adapter by lazy { CardStackAdapter(createSpots()) }
@@ -29,6 +33,13 @@ class HomeFragment : Fragment(), CardStackListener {
     ): View? {
         // Inflate the layout for this fragment
         val homeFragmentView : View = inflater!!.inflate(R.layout.fragment_home, container, false)
+
+        toolbar = homeFragmentView.findViewById(R.id.toolbar) as Toolbar
+//
+//        (activity as AppCompatActivity?)!!.setSupportActionBar(toolbar)
+//        toolbar.setTitle("toolbar")
+
+
 
         cardStackView = homeFragmentView.findViewById(R.id.cardStackView)
         manager = CardStackLayoutManager(context,this)
