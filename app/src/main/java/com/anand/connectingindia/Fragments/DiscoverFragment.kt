@@ -30,7 +30,7 @@ class DiscoverFragment : Fragment() {
         tabLayout = view.findViewById(R.id.tabLayout)
         viewPager = view.findViewById(R.id.viewPager)
 
-        adapter = MyPagerAdapter((activity as AppCompatActivity).supportFragmentManager)
+        adapter = MyPagerAdapter(childFragmentManager)
 
         viewPager.adapter = adapter
 

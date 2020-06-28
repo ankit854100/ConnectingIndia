@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -22,11 +23,26 @@ class CardStackAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val spot = spots[position]
-        holder.name.text = "${spot.id}. ${spot.name}"
-        holder.city.text = spot.city
-        Glide.with(holder.image)
+//        holder.name.text = "${spot.id}. ${spot.name}"
+//        holder.city.text = spot.city
+//        Glide.with(holder.image)
+//            .load(spot.url)
+//            .into(holder.image)
+
+        if (spot.postText.equals("")){
+            holder.name.text = "${spot.id}. ${spot.name}"
+            holder.city.text = spot.city
+            Glide.with(holder.image)
             .load(spot.url)
             .into(holder.image)
+        }
+        else{
+            holder.name.text = "${spot.id}. ${spot.name}"
+            holder.city.text = spot.city
+            holder.image.visibility = View.GONE
+            holder.postLayout.visibility = View.VISIBLE
+            holder.post.text = spot.postText
+        }
         holder.itemView.setOnClickListener { v ->
             Toast.makeText(v.context, spot.name, Toast.LENGTH_SHORT).show()
         }
@@ -48,6 +64,8 @@ class CardStackAdapter(
         val name: TextView = view.findViewById(R.id.item_name)
         var city: TextView = view.findViewById(R.id.item_city)
         var image: ImageView = view.findViewById(R.id.item_image)
+        var post : TextView = view.findViewById(R.id.postText)
+        var postLayout : RelativeLayout = view.findViewById(R.id.postLayout)
     }
 
 }

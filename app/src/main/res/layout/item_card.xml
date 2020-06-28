@@ -17,13 +17,31 @@
         android:scaleType="centerCrop"
         />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundColor"
+        android:id="@+id/postLayout"
+        android:padding="10dp"
+        android:visibility="gone"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/postText"
+            android:text="abra la dabra"
+            android:textSize="25dp"
+            android:layout_marginTop="50dp"/>
+    </RelativeLayout>
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:padding="16dp"
-        android:background="@drawable/gradation_black">
+        android:background="@drawable/transparent_background">
 
         <TextView
             android:id="@+id/item_name"
@@ -55,7 +73,7 @@
         android:id="@+id/left_overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/overlay_black">
+        android:background="@drawable/transparent_background">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -69,7 +87,7 @@
         android:id="@+id/right_overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/overlay_black">
+        android:background="@drawable/transparent_background">
 
         <ImageView
             android:layout_width="wrap_content"

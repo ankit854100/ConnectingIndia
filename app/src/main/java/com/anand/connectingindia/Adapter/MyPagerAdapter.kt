@@ -3,7 +3,7 @@ package com.anand.connectingindia.Adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.anand.connectingindia.Fragments.CommunityFragment
+import com.anand.connectingindia.Fragments.CommunitiesFragment
 import com.anand.connectingindia.Fragments.GamesFragment
 import com.anand.connectingindia.Fragments.StoriesFragment
 
@@ -14,7 +14,7 @@ class MyPagerAdapter (fm: FragmentManager) : FragmentPagerAdapter(fm) {
                 StoriesFragment()
             }
             1 -> {
-                CommunityFragment()
+                CommunitiesFragment()
             }
             else -> {
                 return GamesFragment()

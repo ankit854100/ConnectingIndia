@@ -10,6 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Communities Fragment"/>
+        android:text="Communities Fragment"
+        android:textSize="20dp"/>
 
 </RelativeLayout>
