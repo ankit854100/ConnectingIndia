@@ -1,12 +1,10 @@
 package com.anand.connectingindia.Adapter
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.RelativeLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.anand.connectingindia.Model.Spot
 import com.anand.connectingindia.R
@@ -28,21 +26,29 @@ class CardStackAdapter(
 //        Glide.with(holder.image)
 //            .load(spot.url)
 //            .into(holder.image)
-
-        if (spot.postText.equals("")){
+//
+        if (spot.url.isNotEmpty()){
             holder.name.text = "${spot.id}. ${spot.name}"
             holder.city.text = spot.city
             Glide.with(holder.image)
             .load(spot.url)
             .into(holder.image)
         }
-        else{
+        if (spot.video.isNotEmpty()){
+            holder.videoView.visibility = View.VISIBLE
+            holder.videoView.setVideoURI(Uri.parse(spot.video))
+            holder.videoView.start()
+        }
+        if (spot.postText.isNotEmpty()){
             holder.name.text = "${spot.id}. ${spot.name}"
             holder.city.text = spot.city
             holder.image.visibility = View.GONE
             holder.postLayout.visibility = View.VISIBLE
             holder.post.text = spot.postText
         }
+
+
+
         holder.itemView.setOnClickListener { v ->
             Toast.makeText(v.context, spot.name, Toast.LENGTH_SHORT).show()
         }
@@ -66,6 +72,7 @@ class CardStackAdapter(
         var image: ImageView = view.findViewById(R.id.item_image)
         var post : TextView = view.findViewById(R.id.postText)
         var postLayout : RelativeLayout = view.findViewById(R.id.postLayout)
+        var videoView : VideoView = view.findViewById(R.id.video_view)
     }
 
 }
