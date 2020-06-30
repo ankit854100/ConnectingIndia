@@ -1,11 +1,16 @@
 package com.anand.connectingindia.Adapter
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.widget.NestedScrollView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.anand.connectingindia.Model.Comments
 import com.anand.connectingindia.Model.Spot
 import com.anand.connectingindia.R
 import com.bumptech.glide.Glide
@@ -14,38 +19,50 @@ class CardStackAdapter(
     private var spots: List<Spot> = emptyList()
 ) : RecyclerView.Adapter<CardStackAdapter.ViewHolder>() {
 
+    private lateinit var mContext: Context
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
+        mContext = parent.context
         return ViewHolder(inflater.inflate(R.layout.item_card, parent, false))
     }
 
+    @SuppressLint("WrongConstant")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val spot = spots[position]
-//        holder.name.text = "${spot.id}. ${spot.name}"
-//        holder.city.text = spot.city
-//        Glide.with(holder.image)
-//            .load(spot.url)
-//            .into(holder.image)
-//
-        if (spot.url.isNotEmpty()){
-            holder.name.text = "${spot.id}. ${spot.name}"
-            holder.city.text = spot.city
-            Glide.with(holder.image)
+
+        holder.scrollView.scrollTo(0,0)
+
+        holder.name.text = "${spot.id}. ${spot.name}"
+        holder.city.text = spot.city
+        Glide.with(holder.image)
             .load(spot.url)
             .into(holder.image)
-        }
-        if (spot.video.isNotEmpty()){
-            holder.videoView.visibility = View.VISIBLE
-            holder.videoView.setVideoURI(Uri.parse(spot.video))
-            holder.videoView.start()
-        }
-        if (spot.postText.isNotEmpty()){
-            holder.name.text = "${spot.id}. ${spot.name}"
-            holder.city.text = spot.city
-            holder.image.visibility = View.GONE
-            holder.postLayout.visibility = View.VISIBLE
-            holder.post.text = spot.postText
-        }
+//
+//        if (spot.url.isNotEmpty()){
+//            holder.name.text = "${spot.id}. ${spot.name}"
+//            holder.city.text = spot.city
+//            Glide.with(holder.image)
+//            .load(spot.url)
+//            .into(holder.image)
+//        }
+//        if (spot.video.isNotEmpty()){
+//            holder.videoView.visibility = View.VISIBLE
+//            holder.videoView.setVideoURI(Uri.parse(spot.video))
+//            holder.videoView.start()
+//        }
+//        if (spot.postText.isNotEmpty()){
+//            holder.name.text = "${spot.id}. ${spot.name}"
+//            holder.city.text = spot.city
+//            holder.image.visibility = View.GONE
+//            holder.postLayout.visibility = View.VISIBLE
+//            holder.post.text = spot.postText
+//        }
+
+
+        var commentAdapter = CommentAdapter(getComments())
+        holder.recyclerView.layoutManager = LinearLayoutManager(mContext, LinearLayout.VERTICAL , false)
+        holder.recyclerView.adapter = commentAdapter
 
 
 
@@ -66,6 +83,22 @@ class CardStackAdapter(
         return spots
     }
 
+    fun getComments(): List<Comments> {
+        val comments = ArrayList<Comments>()
+
+        comments.add(Comments(userComment = "hey there how are you"))
+        comments.add(Comments(userComment = "how you doing"))
+        comments.add(Comments(userComment = "get some space bro"))
+        comments.add(Comments(userComment = "hey there how are you"))
+        comments.add(Comments(userComment = "how you doing"))
+        comments.add(Comments(userComment = "get some space bro"))
+        comments.add(Comments(userComment = "hey there how are you"))
+        comments.add(Comments(userComment = "how you doing"))
+        comments.add(Comments(userComment = "get some space bro"))
+
+        return comments
+    }
+
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val name: TextView = view.findViewById(R.id.item_name)
         var city: TextView = view.findViewById(R.id.item_city)
@@ -73,6 +106,8 @@ class CardStackAdapter(
         var post : TextView = view.findViewById(R.id.postText)
         var postLayout : RelativeLayout = view.findViewById(R.id.postLayout)
         var videoView : VideoView = view.findViewById(R.id.video_view)
+        var recyclerView : RecyclerView = view.findViewById(R.id.commentRecyclerView)
+        var scrollView : NestedScrollView = view.findViewById(R.id.scrollView)
     }
 
 }

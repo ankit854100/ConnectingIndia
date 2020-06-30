@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <com.yuyakaido.android.cardstackview.CardStackView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/cardStackView"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/cardStackView"/>
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
@@ -98,7 +97,8 @@
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_chat"
+            android:id="@+id/rewind"
+            android:src="@drawable/ic_arrow_back_black_24dp"
             android:background="@color/colorPrimary"
             android:layout_marginBottom="5dp"
             android:clickable="true"/>
@@ -122,5 +122,7 @@
 
 
     </LinearLayout>
+
+
 
 </RelativeLayout>
