@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.anand.connectingindia.Model.Comments
 import com.anand.connectingindia.Model.Spot
 import com.anand.connectingindia.R
+import com.borjabravo.readmoretextview.ReadMoreTextView
 import com.bumptech.glide.Glide
 
 class CardStackAdapter(
@@ -38,26 +39,35 @@ class CardStackAdapter(
         Glide.with(holder.image)
             .load(spot.url)
             .into(holder.image)
-//
-//        if (spot.url.isNotEmpty()){
-//            holder.name.text = "${spot.id}. ${spot.name}"
-//            holder.city.text = spot.city
-//            Glide.with(holder.image)
-//            .load(spot.url)
-//            .into(holder.image)
-//        }
+
+        if (spot.url.isNotEmpty()){
+
+            holder.textPostLayout.visibility = View.GONE
+            holder.image.visibility = View.VISIBLE
+
+            holder.name.text = "${spot.id}. ${spot.name}"
+            holder.city.text = spot.city
+            Glide.with(holder.image)
+            .load(spot.url)
+            .into(holder.image)
+
+        }
 //        if (spot.video.isNotEmpty()){
 //            holder.videoView.visibility = View.VISIBLE
 //            holder.videoView.setVideoURI(Uri.parse(spot.video))
 //            holder.videoView.start()
 //        }
-//        if (spot.postText.isNotEmpty()){
-//            holder.name.text = "${spot.id}. ${spot.name}"
-//            holder.city.text = spot.city
-//            holder.image.visibility = View.GONE
-//            holder.postLayout.visibility = View.VISIBLE
-//            holder.post.text = spot.postText
-//        }
+        if (spot.postText.isNotEmpty()){
+
+            holder.scrollView.scrollTo(0,0)
+
+            holder.image.visibility = View.GONE
+            holder.textPostLayout.visibility = View.VISIBLE
+
+            holder.name.text = "${spot.id}. ${spot.name}"
+            holder.city.text = spot.city
+            holder.readMoreText.text = spot.postText
+        }
 
 
         var commentAdapter = CommentAdapter(getComments())
@@ -103,11 +113,10 @@ class CardStackAdapter(
         val name: TextView = view.findViewById(R.id.item_name)
         var city: TextView = view.findViewById(R.id.item_city)
         var image: ImageView = view.findViewById(R.id.item_image)
-        var post : TextView = view.findViewById(R.id.postText)
-        var postLayout : RelativeLayout = view.findViewById(R.id.postLayout)
-        var videoView : VideoView = view.findViewById(R.id.video_view)
         var recyclerView : RecyclerView = view.findViewById(R.id.commentRecyclerView)
         var scrollView : NestedScrollView = view.findViewById(R.id.scrollView)
+        var readMoreText : ReadMoreTextView = view.findViewById(R.id.read_more_text)
+        var textPostLayout : LinearLayout = view.findViewById(R.id.text_post_layout)
     }
 
 }

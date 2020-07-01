@@ -128,7 +128,13 @@ class HomeFragment : Fragment(), CardStackListener {
         val spots = ArrayList<Spot>()
         spots.add(Spot(name = "Yasaka Shrine", city = "Kyoto", url = "https://source.unsplash.com/Xq1ntWruZQI/600x800", postText = "", video = ""))
         spots.add(Spot(name = "Fushimi Inari Shrine", city = "Kyoto", url = "https://source.unsplash.com/NYyCqdBOKwc/600x800", postText = "",video = ""))
-//        spots.add(Spot(name = "Fushimi Inari Shrine", city = "Kyoto", url = "", postText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris finibus sollicitudin augue, eu volutpat eros fringilla vel. Duis mattis, erat at cursus cursus, ante purus tincidunt magna, vitae sollicitudin tortor erat non dolor. Cras mi elit, rutrum ac feugiat vitae, imperdiet nec eros. Vivamus aliquam felis quam. Nunc sit amet ante nec sapien tristique iaculis id quis neque. Integer maximus neque sit amet iaculis tristique. Maecenas ac blandit elit. ", video = ""))
+
+        spots.add(Spot(name = "Fushimi Inari Shrine", city = "Kyoto", url = "", postText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
+                "Mauris finibus sollicitudin augue, eu volutpat eros fringilla vel. Duis mattis, erat at cursus cursus, " +
+                "ante purus tincidunt magna, vitae sollicitudin tortor erat non dolor. Cras mi elit, rutrum ac feugiat vitae, " +
+                "imperdiet nec eros. Vivamus aliquam felis quam. Nunc sit amet ante nec sapien tristique iaculis id quis neque. " +
+                "Integer maximus neque sit amet iaculis tristique. Maecenas ac blandit elit. ", video = ""))
+
 //        spots.add(Spot(name = "Bamboo Forest", city = "Kyoto", url = "https://source.unsplash.com/buF62ewDLcQ/600x800", postText = "", video = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"))
         spots.add(Spot(name = "Brooklyn Bridge", city = "New York", url = "https://source.unsplash.com/THozNzxEP3g/600x800", postText = "", video = ""))
         spots.add(Spot(name = "Empire State Building", city = "New York", url = "https://source.unsplash.com/USrZRcRS2Lw/600x800", postText = "", video = ""))
