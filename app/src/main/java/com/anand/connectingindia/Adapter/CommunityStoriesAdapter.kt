@@ -2,7 +2,6 @@ package com.anand.connectingindia.Adapter
 
 import android.content.Context
 import android.content.Intent
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +14,6 @@ import com.anand.connectingindia.StoriesActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.request.RequestOptions
 
 class CommunityStoriesAdapter(private var storiesList : List<Stories> = emptyList()) :  RecyclerView.Adapter<CommunityStoriesAdapter.ViewHolder>(){
 
@@ -26,18 +24,31 @@ class CommunityStoriesAdapter(private var storiesList : List<Stories> = emptyLis
 
         val inflater = LayoutInflater.from(parent.context)
         mContext = parent.context
-        return ViewHolder(inflater.inflate(R.layout.item_stories, parent, false))
+        return ViewHolder(inflater.inflate(R.layout.community_story_item, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val story = storiesList[position]
 
-        Glide.with(holder.profileImage)
+        Glide.with(holder.profileImage1)
             .load(story.profileImage)
             .transform(CenterCrop(), RoundedCorners(20))
-            .into(holder.profileImage)
+            .into(holder.profileImage1)
 
-        holder.playButton.setOnClickListener {
+        Glide.with(holder.profileImage2)
+            .load(story.profileImage)
+            .transform(CenterCrop(), RoundedCorners(20))
+            .into(holder.profileImage2)
+
+        holder.playButton1.setOnClickListener {
+
+            Toast.makeText(mContext, "play button is clicked", Toast.LENGTH_SHORT).show()
+            intent = Intent(mContext, StoriesActivity::class.java)
+            mContext.startActivity(intent)
+        }
+
+        holder.playButton2.setOnClickListener {
+
             Toast.makeText(mContext, "play button is clicked", Toast.LENGTH_SHORT).show()
             intent = Intent(mContext, StoriesActivity::class.java)
             mContext.startActivity(intent)
@@ -52,7 +63,9 @@ class CommunityStoriesAdapter(private var storiesList : List<Stories> = emptyLis
 
     class ViewHolder(view : View) : RecyclerView.ViewHolder(view){
 
-        var profileImage : ImageView = view.findViewById(R.id.stories_image)
-        var playButton : ImageView = view.findViewById(R.id.play01)
+        var profileImage1 : ImageView = view.findViewById(R.id.stories_image1)
+        var playButton1 : ImageView = view.findViewById(R.id.play01)
+        var profileImage2 : ImageView = view.findViewById(R.id.stories_image2)
+        var playButton2 : ImageView = view.findViewById(R.id.play02)
     }
 }

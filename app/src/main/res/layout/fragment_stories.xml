@@ -8,6 +8,15 @@
     android:orientation="vertical"
     android:padding="5dp">
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,7 +28,7 @@
             android:layout_height="wrap_content"
             android:text="Friends stories"
             android:textSize="25dp"
-            android:textColor="@color/colorPrimary"
+            android:textColor="#000"
             android:textStyle="bold"
             android:layout_marginLeft="10dp"/>
 
@@ -46,7 +55,7 @@
             android:layout_height="wrap_content"
             android:text="Discover stories"
             android:textSize="25dp"
-            android:textColor="@color/colorPrimary"
+            android:textColor="#000"
             android:textStyle="bold"
             android:layout_marginLeft="10dp"/>
 
@@ -57,6 +66,10 @@
             android:id="@+id/community_recycler_view_stories"
             android:layout_marginLeft="5dp"/>
     </LinearLayout>
+
+    </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 
 
