@@ -23,96 +23,16 @@
             android:textStyle="bold"
             android:layout_marginLeft="10dp"/>
 
-        <HorizontalScrollView
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="10dp">
+            android:id="@+id/stories_recycler_view"
+            android:layout_marginLeft="5dp"/>
 
-            <RelativeLayout
-                android:layout_width="100dp"
-                android:layout_height="150dp"
-                android:background="@drawable/sample1"
-                android:gravity="center"
-                android:layout_marginRight="5dp">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_play_circle_filled_black_24dp"
-                    android:id="@+id/play"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="100dp"
-                android:layout_height="150dp"
-                android:background="@drawable/sample1"
-                android:gravity="center"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_play_circle_filled_black_24dp"
-                    android:id="@+id/play1"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="100dp"
-                android:layout_height="150dp"
-                android:background="@drawable/sample1"
-                android:gravity="center"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_play_circle_filled_black_24dp"
-                    android:id="@+id/play2"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="100dp"
-                android:layout_height="150dp"
-                android:background="@drawable/sample1"
-                android:gravity="center"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_play_circle_filled_black_24dp"
-                    android:id="@+id/play3"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="100dp"
-                android:layout_height="150dp"
-                android:background="@drawable/sample1"
-                android:gravity="center"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_play_circle_filled_black_24dp"
-                    android:id="@+id/play4"/>
-            </RelativeLayout>
-
-
-        </LinearLayout>
-
-        </HorizontalScrollView>
 
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -130,90 +50,12 @@
             android:textStyle="bold"
             android:layout_marginLeft="10dp"/>
 
-        <HorizontalScrollView
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="10dp">
-
-                <RelativeLayout
-                    android:layout_width="100dp"
-                    android:layout_height="150dp"
-                    android:background="@drawable/sample1"
-                    android:gravity="center"
-                    android:layout_marginRight="5dp">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/ic_play_circle_filled_black_24dp"
-                        android:id="@+id/play01"/>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="100dp"
-                    android:layout_height="150dp"
-                    android:background="@drawable/sample1"
-                    android:gravity="center"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/ic_play_circle_filled_black_24dp"
-                        android:id="@+id/play02"/>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="100dp"
-                    android:layout_height="150dp"
-                    android:background="@drawable/sample1"
-                    android:gravity="center"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/ic_play_circle_filled_black_24dp"/>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="100dp"
-                    android:layout_height="150dp"
-                    android:background="@drawable/sample1"
-                    android:gravity="center"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/ic_play_circle_filled_black_24dp"/>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="100dp"
-                    android:layout_height="150dp"
-                    android:background="@drawable/sample1"
-                    android:gravity="center"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/ic_play_circle_filled_black_24dp"/>
-                </RelativeLayout>
-
-            </LinearLayout>
-
-        </HorizontalScrollView>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/community_recycler_view_stories"
+            android:layout_marginLeft="5dp"/>
     </LinearLayout>
 
 

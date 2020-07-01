@@ -1,5 +1,6 @@
 package com.anand.connectingindia.Fragments
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,43 +8,73 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
+import android.widget.LinearLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.anand.connectingindia.Adapter.CommunityStoriesAdapter
+import com.anand.connectingindia.Adapter.StoriesAdapter
+import com.anand.connectingindia.Model.Stories
 
 import com.anand.connectingindia.R
-import com.anand.connectingindia.StoriesActivity
 
-/**
- * A simple [Fragment] subclass.
- */
 class StoriesFragment : Fragment() {
 
     private lateinit var playImage : ImageView
     private lateinit var playImage1 : ImageView
     private lateinit var intent: Intent
 
+    private val storiesAdapter : StoriesAdapter by lazy { StoriesAdapter(createFollowingStoriesList()) }
+    private lateinit var storiesRecyclerView : RecyclerView
+
+    private lateinit var communityStoriesRecyclerView: RecyclerView
+    private val communityStoriesAdapter : CommunityStoriesAdapter by lazy { CommunityStoriesAdapter(createCommunityStoriesList()) }
+
+
+    @SuppressLint("WrongConstant")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         val view : View = inflater!!.inflate(R.layout.fragment_stories, container, false)
 
-        playImage = view.findViewById(R.id.play)
-        playImage1 = view.findViewById(R.id.play01)
+        storiesRecyclerView = view.findViewById(R.id.stories_recycler_view)
+        storiesRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
+        storiesRecyclerView.adapter = storiesAdapter
 
-        playImage.setOnClickListener {
-            Toast.makeText(context, "play button is clicked", Toast.LENGTH_SHORT).show()
-            intent = Intent(context, StoriesActivity::class.java)
-            startActivity(intent)
-        }
 
-        playImage1.setOnClickListener {
-            Toast.makeText(context, "play button is clicked", Toast.LENGTH_SHORT).show()
-            intent = Intent(context, StoriesActivity::class.java)
-            startActivity(intent)
-        }
+        communityStoriesRecyclerView = view.findViewById(R.id.community_recycler_view_stories)
+        communityStoriesRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
+        communityStoriesRecyclerView.adapter = communityStoriesAdapter
+
 
         return view
+    }
+
+    private fun createFollowingStoriesList() : List<Stories> {
+        val story = ArrayList<Stories>()
+
+        story.add( Stories(name = "monica", profileImage = "https://source.unsplash.com/CdVAUADdqEc/600x800" ))
+        story.add( Stories(name = "chandler", profileImage = "https://source.unsplash.com/Xq1ntWruZQI/600x800" ))
+        story.add( Stories(name = "rachel", profileImage = "https://source.unsplash.com/LrMWHKqilUw/600x800" ))
+        story.add( Stories(name = "monica", profileImage = "https://source.unsplash.com/CdVAUADdqEc/600x800" ))
+        story.add( Stories(name = "chandler", profileImage = "https://source.unsplash.com/Xq1ntWruZQI/600x800" ))
+        story.add( Stories(name = "rachel", profileImage = "https://source.unsplash.com/LrMWHKqilUw/600x800" ))
+
+        return story
+    }
+
+    private fun createCommunityStoriesList() : List<Stories> {
+        val story = ArrayList<Stories>()
+
+        story.add( Stories(name = "monica", profileImage = "https://source.unsplash.com/Xq1ntWruZQI/600x800" ))
+        story.add( Stories(name = "chandler", profileImage = "https://source.unsplash.com/Xq1ntWruZQI/600x800" ))
+        story.add( Stories(name = "rachel", profileImage = "https://source.unsplash.com/LrMWHKqilUw/600x800" ))
+        story.add( Stories(name = "monica", profileImage = "https://source.unsplash.com/CdVAUADdqEc/600x800" ))
+        story.add( Stories(name = "chandler", profileImage = "https://source.unsplash.com/Xq1ntWruZQI/600x800" ))
+        story.add( Stories(name = "rachel", profileImage = "https://source.unsplash.com/CdVAUADdqEc/600x800" ))
+
+        return story
     }
 
 }

@@ -70,10 +70,8 @@ class StoriesActivity : AppCompatActivity() {
             override fun onComplete() {
 
                 Toast.makeText(this@StoriesActivity, " Stories are completed", Toast.LENGTH_LONG).show()
-                var intent = Intent(this@StoriesActivity, StoriesFragment::class.java)
-                intent.putExtra("code", "123")
-                startActivity(intent)
-                finish()
+                this@StoriesActivity.finish();
+
             }
 
             override fun onPrev() {
