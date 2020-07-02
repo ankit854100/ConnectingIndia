@@ -20,10 +20,55 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/windowBackground"
+            android:padding="4dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/sample1"
+                android:scaleType="centerCrop"
+                android:id="@+id/profile_picture"/>
+
+            <TextView
+                android:id="@+id/item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="16sp"
+                android:layout_toRightOf="@+id/profile_picture"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/item_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:layout_toRightOf="@+id/item_name"/>
+
+            <TextView
+                android:id="@+id/item_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="14sp"
+                android:layout_toRightOf="@+id/profile_picture"
+                android:layout_below="@+id/item_name"
+                android:layout_marginLeft="10dp"/>
+
+
+
+
+        </RelativeLayout>
+
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/item_image"
             android:layout_width="match_parent"
-            android:layout_height="530dp"
+            android:layout_height="400dp"
             android:scaleType="centerCrop"
             android:visibility="gone"
             />
@@ -31,15 +76,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:padding="5dp"
+            android:background="@color/colorWhite"
+            android:padding="10dp"
             android:id="@+id/text_post_layout"
             android:orientation="vertical">
 
             <com.borjabravo.readmoretextview.ReadMoreTextView
                 android:id="@+id/read_more_text"
-                android:layout_marginTop="50dp"
-                android:layout_marginBottom="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
@@ -49,7 +92,8 @@
                 app:trimLength="200"
                 android:textSize="20dp"
                 android:textColor="#000"
-                app:colorClickableText="@color/colorWhite"
+                app:colorClickableText="@color/colorPrimary"
+                android:focusableInTouchMode="true"
                 />
 
         </LinearLayout>
@@ -57,7 +101,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@drawable/custom_button"
+            android:background="?android:attr/windowBackground"
             android:layout_marginTop="3dp">
 
             <ImageView
@@ -66,12 +110,14 @@
                 android:src="@drawable/ic_chat"
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="6dp"
-                android:layout_marginLeft="30dp"/>
+                android:layout_marginLeft="30dp"
+                android:tint="@color/colorPrimary"/>
 
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_repost_post"
+                android:tint="@color/colorPrimary"
                 android:layout_centerInParent="true"
                 android:layout_margin="6dp"/>
 
@@ -80,6 +126,7 @@
                 android:layout_height="30dp"
                 android:src="@drawable/ic_download_post"
                 android:layout_alignParentEnd="true"
+                android:tint="@color/colorPrimary"
                 android:layout_marginRight="30dp"
                 android:layout_marginTop="6dp"/>
         </RelativeLayout>
@@ -88,6 +135,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="comments"
+            android:textStyle="bold"
             android:textColor="#000"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="5dp"/>
@@ -107,33 +155,10 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
+        android:layout_gravity="top"
         android:padding="16dp"
         android:background="@drawable/transparent_background">
 
-        <TextView
-            android:id="@+id/item_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textColor="@android:color/white"
-            android:textSize="26sp"/>
-
-        <TextView
-            android:id="@+id/item_age"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"/>
-
-        <TextView
-            android:id="@+id/item_city"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"/>
 
     </LinearLayout>
 

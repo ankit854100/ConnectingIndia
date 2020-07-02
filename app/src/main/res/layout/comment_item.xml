@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="5dp"
-    android:background="@drawable/custom_button"
-    android:layout_marginBottom="5dp">
+    android:background="?android:attr/windowBackground"
+    android:layout_marginBottom="2dp">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/sample1"
@@ -20,6 +20,9 @@
         android:layout_height="wrap_content"
         android:text="Lisa Kudrow"
         android:id="@+id/username"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:textSize="16sp"
         android:layout_toRightOf="@+id/profileImage"
         android:layout_marginLeft="5dp"/>
 
@@ -28,7 +31,7 @@
         android:layout_height="wrap_content"
         android:text="this is the first comment"
         android:textColor="#000"
-        android:textSize="20dp"
+        android:textStyle="normal"
         android:id="@+id/comment"
         android:layout_below="@+id/username"
         android:layout_marginTop="5dp"
