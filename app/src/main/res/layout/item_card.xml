@@ -73,12 +73,20 @@
             android:visibility="gone"
             />
 
+            <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:visibility="gone"
+                android:id="@+id/simpleExoplayerView"/>
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorWhite"
             android:padding="10dp"
             android:id="@+id/text_post_layout"
+            android:visibility="gone"
             android:orientation="vertical">
 
             <com.borjabravo.readmoretextview.ReadMoreTextView
@@ -172,6 +180,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:src="@drawable/ic_dislike_icon"
+            android:tint="@color/colorRed"
             android:layout_gravity="center"/>
 
     </FrameLayout>
@@ -186,6 +195,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:src="@drawable/ic_like_icon"
+            android:tint="@color/colorPrimary"
             android:layout_gravity="center"/>
 
     </FrameLayout>
