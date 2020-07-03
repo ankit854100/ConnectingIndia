@@ -28,7 +28,7 @@
             android:layout_height="40dp"
             android:hint="search..."
             android:background="@drawable/transparent_background"
-            android:textColor="@color/colorPrimary"
+            android:textColor="#000"
             android:maxLines="1"/>
     </LinearLayout>
 
@@ -39,8 +39,9 @@
         app:tabMode="fixed"
         app:tabMaxWidth="0dp"
         app:tabGravity="fill"
-        app:tabIndicatorColor="@color/colorPrimary"
-        app:tabTextColor="@color/colorPrimary"
+        app:tabIndicatorColor="#000"
+        app:tabTextColor="@color/colorAccent"
+        app:tabSelectedTextColor="#000"
         android:background="@drawable/transparent_background"/>
     
     <androidx.viewpager.widget.ViewPager
