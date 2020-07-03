@@ -12,16 +12,6 @@
         android:layout_above="@+id/bottom"
         android:id="@+id/fragmentContainer">
 
-        <Button
-            android:layout_width="323dp"
-            android:layout_height="40dp"
-            android:text="logout"
-            android:id="@+id/logoutButton"
-            android:background="@drawable/custom_button"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:visibility="gone"/>
-
     </FrameLayout>
 
     <com.google.android.material.appbar.AppBarLayout
@@ -41,6 +31,8 @@
             app:menu="@menu/bottom_nav_items"
             app:itemBackground="@drawable/checked_unchecked"
             />
+
+
     </com.google.android.material.appbar.AppBarLayout>
 
 

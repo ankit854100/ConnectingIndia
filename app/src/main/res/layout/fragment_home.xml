@@ -17,7 +17,9 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="5dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="5dp"
+            android:paddingBottom="5dp"
             android:layout_marginRight="10dp">
 
             <ImageView
@@ -27,15 +29,14 @@
                 android:id="@+id/profileIcon"
                 android:tint="#000"
                 android:layout_centerVertical="true"
-                android:layout_alignParentStart="true"/>
+                android:layout_alignParentStart="true" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Scooby"
-                android:textSize="30dp"
-                android:textColor="#000"
-                android:layout_centerInParent="true"/>
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:src="@drawable/insta_icon"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="18dp"/>
 
 
             <ImageView
@@ -62,7 +63,8 @@
         app:tabIndicatorColor="@color/colorPrimary"
         app:tabTextColor="@color/backgroundColor"
         app:tabSelectedTextColor="@color/colorPrimary"
-        android:background="@drawable/transparent_background"/>
+        android:background="@drawable/transparent_background"
+        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"/>
 
     <androidx.viewpager.widget.ViewPager
         android:layout_width="match_parent"

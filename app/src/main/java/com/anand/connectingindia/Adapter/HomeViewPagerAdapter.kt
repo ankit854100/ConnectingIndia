@@ -33,4 +33,5 @@ class HomeViewPagerAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm) {
             }
         }
     }
+
 }

@@ -2,6 +2,7 @@ package com.anand.connectingindia.Fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
@@ -35,9 +36,11 @@ class HomeFragment : Fragment() {
         userPagerAdapter = HomeViewPagerAdapter(childFragmentManager)
 
         viewPager.adapter = userPagerAdapter
+
         tabLayout.setupWithViewPager(viewPager)
 
         return homeFragmentView
     }
+
 
 }

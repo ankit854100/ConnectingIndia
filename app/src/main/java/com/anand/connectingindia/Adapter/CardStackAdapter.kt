@@ -15,6 +15,8 @@ import com.anand.connectingindia.Model.Spot
 import com.anand.connectingindia.R
 import com.borjabravo.readmoretextview.ReadMoreTextView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.android.exoplayer2.ExoPlayerFactory
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory
@@ -49,7 +51,7 @@ class CardStackAdapter(
 
         holder.scrollView.scrollTo(0,0)
 
-        holder.name.text = "${spot.id}. ${spot.name}"
+        holder.name.text = spot.name
         holder.city.text = spot.city
         Glide.with(holder.image)
             .load(spot.url)
@@ -60,19 +62,21 @@ class CardStackAdapter(
             holder.textPostLayout.visibility = View.GONE
             holder.simpleExoPLayerView.visibility = View.GONE
             simpleExoPlayer.release()
-            holder.image.visibility = View.VISIBLE
+            holder.imageContainer.visibility = View.VISIBLE
 
             holder.name.text = "${spot.id}. ${spot.name}"
             holder.city.text = spot.city
+
             Glide.with(holder.image)
-            .load(spot.url)
-            .into(holder.image)
+                .load(spot.url)
+                .transform(CenterCrop(), RoundedCorners(20))
+                .into(holder.image)
 
         }
 
         if (spot.video.isNotEmpty()){
 
-            holder.image.visibility = View.GONE
+            holder.imageContainer.visibility = View.GONE
             holder.textPostLayout.visibility = View.GONE
             holder.simpleExoPLayerView.visibility = View.VISIBLE
 
@@ -94,7 +98,7 @@ class CardStackAdapter(
 
             holder.scrollView.scrollTo(0,0)
 
-            holder.image.visibility = View.GONE
+            holder.imageContainer.visibility = View.GONE
             holder.simpleExoPLayerView.visibility = View.GONE
             simpleExoPlayer.release()
             holder.textPostLayout.visibility = View.VISIBLE
@@ -148,10 +152,11 @@ class CardStackAdapter(
         val name: TextView = view.findViewById(R.id.item_name)
         var city: TextView = view.findViewById(R.id.item_city)
         var image: ImageView = view.findViewById(R.id.item_image)
+        var imageContainer : LinearLayout = view.findViewById(R.id.image_container)
         var recyclerView : RecyclerView = view.findViewById(R.id.commentRecyclerView)
         var scrollView : NestedScrollView = view.findViewById(R.id.scrollView)
         var readMoreText : ReadMoreTextView = view.findViewById(R.id.read_more_text)
-        var textPostLayout : LinearLayout = view.findViewById(R.id.text_post_layout)
+        var textPostLayout : RelativeLayout = view.findViewById(R.id.text_post_layout)
 //        var videoContainer : RelativeLayout = view.findViewById(R.id.video_container)
         var simpleExoPLayerView : SimpleExoPlayerView = view.findViewById(R.id.simpleExoplayerView)
     }
