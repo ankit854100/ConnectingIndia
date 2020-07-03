@@ -57,7 +57,7 @@
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:src="@drawable/ic_comment_"
-                    android:id="@+id/whatsapp_icon"
+                    android:id="@+id/comment_icon"
                     android:tint="@color/colorAccent"
                     android:layout_gravity="center"/>
 
@@ -86,7 +86,7 @@
                 <ImageView
                     android:layout_width="18dp"
                     android:layout_height="18dp"
-                    android:src="@drawable/ic_like_icon"
+                    android:src="@drawable/ic_heart_icon"
                     android:id="@+id/like_icon"
                     android:tint="@color/colorAccent"
                     android:layout_marginLeft="25dp"/>
