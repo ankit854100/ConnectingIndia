@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.anand.connectingindia">
+    package="com.leakyquill.bb84">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,11 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StoriesActivity"></activity>
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".SignUpActivity" />
+        <activity android:name="com.leakyquill.bb84.StoriesActivity"></activity>
+        <activity android:name="com.leakyquill.bb84.HomeActivity" />
+        <activity android:name="com.leakyquill.bb84.SignUpActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.leakyquill.bb84.MainActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

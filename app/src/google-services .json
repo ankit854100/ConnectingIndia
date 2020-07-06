@@ -8,12 +8,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:700851328148:android:b5424912095c165d199081",
+        "mobilesdk_app_id": "1:700851328148:android:eed3a09ba55aa897199081",
         "android_client_info": {
-          "package_name": "com.leakyquill.bb84"
+          "package_name": "com.anand.connectingindia"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "700851328148-7svj7npjo51g7famcdf8011skf1pkcif.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.anand.connectingindia",
+            "certificate_hash": "ad739ecaa9e1536f52f6eea2e2a0e06d88d96a1d"
+          }
+        },
         {
           "client_id": "700851328148-n6hlm29vs8ft2lfjl10ure1ntftvbrsd.apps.googleusercontent.com",
           "client_type": 3

@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "700851328148-5m5icaubjrs3rjppgfm0ihqbusr501it.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.leakyquill.bb84",
+            "certificate_hash": "ad739ecaa9e1536f52f6eea2e2a0e06d88d96a1d"
+          }
+        },
+        {
           "client_id": "700851328148-n6hlm29vs8ft2lfjl10ure1ntftvbrsd.apps.googleusercontent.com",
           "client_type": 3
         }
