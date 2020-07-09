@@ -14,4 +14,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ZhihuOverlay" parent="ThemeOverlay.AppCompat">
+        <item name="colorButtonNormal">@color/zhihu_primary</item>
+    </style>
+
+
 </resources>

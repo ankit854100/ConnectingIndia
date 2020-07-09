@@ -1,12 +1,14 @@
 package com.leakyquill.bb84
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.leakyquill.bb84.Fragments.*
 import com.google.firebase.auth.FirebaseAuth
-import com.leakyquill.bb84.UserPostFragment.CameraPostFragment
+import com.leakyquill.bb84.UserPostActivites.CameraPostActivity
+import com.leakyquill.bb84.UserPostActivites.FilesPostActivity
 import kotlinx.android.synthetic.main.activity_home.*
 
 //original version
@@ -16,9 +18,6 @@ class HomeActivity : AppCompatActivity(), ModelButtomSheetClass.BottomSheetListe
     lateinit var mAuth : FirebaseAuth
     private lateinit var typeIntent : String
 
-    private var cameraPostFragment = CameraPostFragment()
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -26,11 +25,11 @@ class HomeActivity : AppCompatActivity(), ModelButtomSheetClass.BottomSheetListe
         mAuth = FirebaseAuth.getInstance()
 
 
-        var homeFragment = HomeFragment()
-        var discoverFragment = DiscoverFragment()
-        var postFragment = PostFragment()
-        var communityFragment = CommunityFragment()
-        var notificationFragment = NotificationFragment()
+        val homeFragment = HomeFragment()
+        val discoverFragment = DiscoverFragment()
+//        var postFragment = PostFragment()
+        val communityFragment = CommunityFragment()
+        val notificationFragment = NotificationFragment()
 
 //        homeFragment.view?.setBackgroundResource(R.drawable.home_fragment_selector)
 
@@ -41,7 +40,7 @@ class HomeActivity : AppCompatActivity(), ModelButtomSheetClass.BottomSheetListe
                     makeCurrentFragment(discoverFragment)
                 }
                 R.id.nav_post -> {
-//                    makeCurrentFragment(postFragment)
+
                     val buttomSheetClass = ModelButtomSheetClass()
                     buttomSheetClass.show(supportFragmentManager, "MainActivity")
 
@@ -59,6 +58,7 @@ class HomeActivity : AppCompatActivity(), ModelButtomSheetClass.BottomSheetListe
             commit()
         }
 
+
     }
 
 
@@ -71,7 +71,10 @@ class HomeActivity : AppCompatActivity(), ModelButtomSheetClass.BottomSheetListe
 
     override fun onButtonClicked(s: String) {
         if (s.equals("camera")){
-            makeCurrentFragment(cameraPostFragment)
+            startActivity(Intent(this@HomeActivity, CameraPostActivity::class.java))
+        }
+        else if(s.equals("files")){
+            startActivity(Intent(this@HomeActivity, FilesPostActivity::class.java))
         }
         else{
             Toast.makeText(applicationContext, s + " fragment", Toast.LENGTH_SHORT).show()

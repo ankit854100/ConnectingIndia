@@ -36,15 +36,15 @@ class CardStackAdapter(
 ) : RecyclerView.Adapter<CardStackAdapter.ViewHolder>(){
 
     private lateinit var mContext: Context
-    var bandwidthMeter  = DefaultBandwidthMeter()
-    var trackSelector = DefaultTrackSelector(AdaptiveTrackSelection.Factory(bandwidthMeter))
-    private lateinit var simpleExoPlayer : SimpleExoPlayer
+//    var bandwidthMeter  = DefaultBandwidthMeter()
+//    var trackSelector = DefaultTrackSelector(AdaptiveTrackSelection.Factory(bandwidthMeter))
+//    private lateinit var simpleExoPlayer : SimpleExoPlayer
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
 
         mContext = parent.context
-        simpleExoPlayer =ExoPlayerFactory.newSimpleInstance(mContext, trackSelector)
+//        simpleExoPlayer =ExoPlayerFactory.newSimpleInstance(mContext, trackSelector)
 
         return ViewHolder(inflater.inflate(R.layout.item_card, parent, false))
     }
@@ -63,6 +63,7 @@ class CardStackAdapter(
             Log.i("image url------->", "bhai image chal rha h ")
             holder.textPostLayout.visibility = View.GONE
             holder.simpleExoPLayerView.visibility = View.GONE
+            holder.videoContainer.visibility = View.GONE
             holder.imageContainer.visibility = View.VISIBLE
 
             Glide.with(holder.image)
@@ -78,15 +79,20 @@ class CardStackAdapter(
 
             holder.imageContainer.visibility = View.GONE
             holder.textPostLayout.visibility = View.GONE
+            holder.simpleExoPLayerView.visibility = View.GONE
+            holder.videoContainer.visibility = View.VISIBLE
+
             holder.videoURL.text = spot.video
 
             var uri = Uri.parse(spot.video)
-            holder.simpleExoPLayerView.visibility = View.VISIBLE
-            var dataSourceFactory = DefaultHttpDataSourceFactory("exoplayer_video")
-            var extractorFactory = DefaultExtractorsFactory()
-            var mediaSource = ExtractorMediaSource(uri, dataSourceFactory, extractorFactory, null, null)
-            holder.simpleExoPLayerView.player = simpleExoPlayer
-            simpleExoPlayer.prepare(mediaSource)
+
+            holder.videoContainer.setVideoURI(uri)
+//            holder.simpleExoPLayerView.visibility = View.VISIBLE
+//            var dataSourceFactory = DefaultHttpDataSourceFactory("exoplayer_video")
+//            var extractorFactory = DefaultExtractorsFactory()
+//            var mediaSource = ExtractorMediaSource(uri, dataSourceFactory, extractorFactory, null, null)
+//            holder.simpleExoPLayerView.player = simpleExoPlayer
+//            simpleExoPlayer.prepare(mediaSource)
 //            simpleExoPlayer.playWhenReady = true
         }
         else {
@@ -96,7 +102,7 @@ class CardStackAdapter(
 
             holder.imageContainer.visibility = View.GONE
             holder.simpleExoPLayerView.visibility = View.GONE
-            simpleExoPlayer.release()
+            holder.videoContainer.visibility = View.GONE
             holder.textPostLayout.visibility = View.VISIBLE
 
             holder.name.text = "${spot.id}. ${spot.name}"
@@ -154,7 +160,7 @@ class CardStackAdapter(
         var scrollView : NestedScrollView = view.findViewById(R.id.scrollView)
         var readMoreText : ReadMoreTextView = view.findViewById(R.id.read_more_text)
         var textPostLayout : RelativeLayout = view.findViewById(R.id.text_post_layout)
-//        var videoContainer : RelativeLayout = view.findViewById(R.id.video_container)
+        var videoContainer : VideoView = view.findViewById(R.id.video_view)
         var simpleExoPLayerView : SimpleExoPlayerView = view.findViewById(R.id.simpleExoplayerView)
         var videoURL : TextView = view.findViewById(R.id.video_url)
 

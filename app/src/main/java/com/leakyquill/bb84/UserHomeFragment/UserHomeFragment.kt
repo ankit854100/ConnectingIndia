@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
 import android.widget.TextView
+import android.widget.VideoView
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DiffUtil
 import com.leakyquill.bb84.Adapter.CardStackAdapter
@@ -28,6 +29,7 @@ class UserHomeFragment : Fragment(), CardStackListener{
 //    private val adapter : CardStackAdapter by lazy { CardStackAdapter(createSpots()) }
     private lateinit var rewind : FloatingActionButton
     private lateinit var adapter : CardStackAdapter
+
 
 
     override fun onCreateView(
@@ -67,6 +69,8 @@ class UserHomeFragment : Fragment(), CardStackListener{
 
     override fun onCardRewound() {
         Log.d("CardStackView", "onCardRewound: ${manager.topPosition}")
+        val videoView  =view?.findViewById<VideoView>(R.id.video_view)
+        videoView?.start()
     }
 
     override fun onCardCanceled() {
@@ -77,12 +81,16 @@ class UserHomeFragment : Fragment(), CardStackListener{
 //        val textView = view.findViewById<TextView>(com.yuyakaido.android.cardstackview.R.id.item_name)
 //        val textView = view.findViewById<TextView>(R.id.item_name)
 //        Log.d("CardStackView", "onCardAppeared: ($position) ${textView.text}")
+        val videoView  =view.findViewById<VideoView>(R.id.video_view)
+        videoView.start()
     }
 
     override fun onCardDisappeared(view: View, position: Int) {
 //        val textView = view.findViewById<TextView>(com.yuyakaido.android.cardstackview.R.id.item_name)
-        val textView = view.findViewById<TextView>(R.id.item_name)
-        Log.d("CardStackView", "onCardDisappeared: ($position) ${textView.text}")
+//        val textView = view.findViewById<TextView>(R.id.item_name)
+//        Log.d("CardStackView", "onCardDisappeared: ($position) ${textView.text}")
+        val videoView  =view.findViewById<VideoView>(R.id.video_view)
+        videoView.stopPlayback()
     }
 
     private fun setupCardStackView() {
