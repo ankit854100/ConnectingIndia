@@ -26,9 +26,8 @@ class UserHomeFragment : Fragment(), CardStackListener{
 
     private lateinit var cardStackView: CardStackView
     private lateinit var manager : CardStackLayoutManager
-//    private val adapter : CardStackAdapter by lazy { CardStackAdapter(createSpots()) }
+    private val adapter : CardStackAdapter by lazy { CardStackAdapter(createSpots()) }
     private lateinit var rewind : FloatingActionButton
-    private lateinit var adapter : CardStackAdapter
 
 
 
@@ -44,7 +43,6 @@ class UserHomeFragment : Fragment(), CardStackListener{
         cardStackView = view.findViewById(R.id.cardStackView)
         manager = CardStackLayoutManager(context,this)
 
-        adapter = CardStackAdapter(createSpots())
 
         setupCardStackView()
 
@@ -62,7 +60,7 @@ class UserHomeFragment : Fragment(), CardStackListener{
     override fun onCardSwiped(direction: Direction) {
         Log.d("CardStackView", "onCardSwiped: p = ${manager.topPosition}, d = $direction")
 
-        if (manager.topPosition == adapter.itemCount - 5) {
+        if (manager.topPosition == adapter.itemCount - 1) {
             paginate()
         }
     }
@@ -80,18 +78,22 @@ class UserHomeFragment : Fragment(), CardStackListener{
 //        val textView = view.findViewById<TextView>(com.yuyakaido.android.cardstackview.R.id.item_name)
 //        val textView = view.findViewById<TextView>(R.id.item_name)
 //        Log.d("CardStackView", "onCardAppeared: ($position) ${textView.text}")
-        val videoView  =view.findViewById<VideoView>(R.id.video_view)
-        videoView.seekTo(0)
-        videoView.start()
+//        val videoView  =view.findViewById<VideoView>(R.id.video_view)
+//        videoView.setOnPreparedListener {
+//            it.start()
+//        }
+//        videoView.setOnCompletionListener {
+//            it.start()
+//        }
     }
 
     override fun onCardDisappeared(view: View, position: Int) {
 //        val textView = view.findViewById<TextView>(com.yuyakaido.android.cardstackview.R.id.item_name)
 //        val textView = view.findViewById<TextView>(R.id.item_name)
 //        Log.d("CardStackView", "onCardDisappeared: ($position) ${textView.text}")
-        val videoView  =view.findViewById<VideoView>(R.id.video_view)
-        videoView.seekTo(0)
-        videoView.stopPlayback()
+//        val videoView  =view.findViewById<VideoView>(R.id.video_view)
+//        videoView.stopPlayback()
+//        videoView.seekTo(0)
     }
 
     private fun setupCardStackView() {
@@ -132,6 +134,10 @@ class UserHomeFragment : Fragment(), CardStackListener{
 
     private fun createSpots(): List<Spot> {
         val spots = ArrayList<Spot>()
+
+
+        spots.add(Spot(name = "United States of America", city = "Apple Store", url = "https://images.unsplash.com/photo-1528795259021-d8c86e14354c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=755&q=80", postText = "", video = ""))
+        spots.add(Spot(name = "Great Wall of China", city = "China", url = "https://source.unsplash.com/AWh9C-QjhE4/600x800", postText = "", video = ""))
         spots.add(Spot(name = "Yasaka Shrine", city = "Kyoto", url = "https://source.unsplash.com/Xq1ntWruZQI/600x800", postText = "", video = ""))
         spots.add(Spot(name = "Fushimi Inari Shrine", city = "Kyoto", url = "https://source.unsplash.com/NYyCqdBOKwc/600x800", postText = "",video = ""))
 
@@ -149,7 +155,6 @@ class UserHomeFragment : Fragment(), CardStackListener{
         spots.add(Spot(name = "Louvre Museum", city = "Paris", url = "https://source.unsplash.com/LrMWHKqilUw/600x800", postText = "", video = ""))
         spots.add(Spot(name = "Eiffel Tower", city = "Paris", url = "https://source.unsplash.com/HN-5Z6AmxrM/600x800", postText = "", video = ""))
         spots.add(Spot(name = "Big Ben", city = "London", url = "https://source.unsplash.com/CdVAUADdqEc/600x800", postText = "", video = ""))
-        spots.add(Spot(name = "Great Wall of China", city = "China", url = "https://source.unsplash.com/AWh9C-QjhE4/600x800", postText = "", video = ""))
         return spots
     }
 

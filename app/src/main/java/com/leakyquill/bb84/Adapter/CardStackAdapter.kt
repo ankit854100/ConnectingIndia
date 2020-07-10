@@ -36,15 +36,15 @@ class CardStackAdapter(
 ) : RecyclerView.Adapter<CardStackAdapter.ViewHolder>(){
 
     private lateinit var mContext: Context
-//    var bandwidthMeter  = DefaultBandwidthMeter()
-//    var trackSelector = DefaultTrackSelector(AdaptiveTrackSelection.Factory(bandwidthMeter))
-//    private lateinit var simpleExoPlayer : SimpleExoPlayer
+    var bandwidthMeter  = DefaultBandwidthMeter()
+    var trackSelector = DefaultTrackSelector(AdaptiveTrackSelection.Factory(bandwidthMeter))
+    private lateinit var simpleExoPlayer : SimpleExoPlayer
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
 
         mContext = parent.context
-//        simpleExoPlayer =ExoPlayerFactory.newSimpleInstance(mContext, trackSelector)
+        simpleExoPlayer =ExoPlayerFactory.newSimpleInstance(mContext, trackSelector)
 
         return ViewHolder(inflater.inflate(R.layout.item_card, parent, false))
     }
@@ -76,20 +76,24 @@ class CardStackAdapter(
 
             holder.imageContainer.visibility = View.GONE
             holder.textPostLayout.visibility = View.GONE
-            holder.simpleExoPLayerView.visibility = View.GONE
-            holder.videoContainer.visibility = View.VISIBLE
+            holder.simpleExoPLayerView.visibility = View.VISIBLE
+//            holder.videoContainer.visibility = View.VISIBLE
 
             holder.videoURL.text = spot.video
 
             var uri = Uri.parse(spot.video)
+//            holder.videoContainer.setVideoURI(uri)
 
-            holder.videoContainer.setVideoURI(uri)
-//            holder.simpleExoPLayerView.visibility = View.VISIBLE
-//            var dataSourceFactory = DefaultHttpDataSourceFactory("exoplayer_video")
-//            var extractorFactory = DefaultExtractorsFactory()
-//            var mediaSource = ExtractorMediaSource(uri, dataSourceFactory, extractorFactory, null, null)
-//            holder.simpleExoPLayerView.player = simpleExoPlayer
-//            simpleExoPlayer.prepare(mediaSource)
+//            holder.videoContainer.setVideoPath(spot.video)
+
+
+
+            holder.simpleExoPLayerView.visibility = View.VISIBLE
+            var dataSourceFactory = DefaultHttpDataSourceFactory("exoplayer_video")
+            var extractorFactory = DefaultExtractorsFactory()
+            var mediaSource = ExtractorMediaSource(uri, dataSourceFactory, extractorFactory, null, null)
+            holder.simpleExoPLayerView.player = simpleExoPlayer
+            simpleExoPlayer.prepare(mediaSource)
 //            simpleExoPlayer.playWhenReady = true
         }
         else {
