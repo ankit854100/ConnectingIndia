@@ -69,8 +69,7 @@ class UserHomeFragment : Fragment(), CardStackListener{
 
     override fun onCardRewound() {
         Log.d("CardStackView", "onCardRewound: ${manager.topPosition}")
-        val videoView  =view?.findViewById<VideoView>(R.id.video_view)
-        videoView?.start()
+
     }
 
     override fun onCardCanceled() {
@@ -82,6 +81,7 @@ class UserHomeFragment : Fragment(), CardStackListener{
 //        val textView = view.findViewById<TextView>(R.id.item_name)
 //        Log.d("CardStackView", "onCardAppeared: ($position) ${textView.text}")
         val videoView  =view.findViewById<VideoView>(R.id.video_view)
+        videoView.seekTo(0)
         videoView.start()
     }
 
@@ -90,6 +90,7 @@ class UserHomeFragment : Fragment(), CardStackListener{
 //        val textView = view.findViewById<TextView>(R.id.item_name)
 //        Log.d("CardStackView", "onCardDisappeared: ($position) ${textView.text}")
         val videoView  =view.findViewById<VideoView>(R.id.video_view)
+        videoView.seekTo(0)
         videoView.stopPlayback()
     }
 

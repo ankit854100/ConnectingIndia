@@ -3,6 +3,7 @@ package com.leakyquill.bb84.UserPostActivites
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -121,22 +122,25 @@ class CameraPostActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == CAMERA_REQUEST_CODE){
-
+        if (requestCode == CAMERA_REQUEST_CODE ) {
 
 //                var bitmap: Bitmap = data?.extras?.get("data") as Bitmap
-//                var uri : Uri? = data.data
-//                Log.i("Uri is--->", uri.toString())
-//            val takenImage = BitmapFactory.decodeFile(photoFile.absolutePath)
+            val takenImage = BitmapFactory.decodeFile(photoFile.absolutePath)
 
+            if (takenImage == null){
+                this@CameraPostActivity.finish()
+            }
+            else{
                 var uri: Uri = Uri.fromFile(photoFile.absoluteFile)
 
-
-                Log.i("image Uri----> ", uri.toString())
+//            var path = uri.toString()
 //                uploadImage.setImageBitmap(takenImage)
+
                 uploadImage.setImageURI(uri)
+            }
 
         }
+
 
     }
 

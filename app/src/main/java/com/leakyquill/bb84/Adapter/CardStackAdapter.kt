@@ -60,7 +60,6 @@ class CardStackAdapter(
 
         if (spot.postText.equals("") && spot.video.equals("")){
 
-            Log.i("image url------->", "bhai image chal rha h ")
             holder.textPostLayout.visibility = View.GONE
             holder.simpleExoPLayerView.visibility = View.GONE
             holder.videoContainer.visibility = View.GONE
@@ -74,8 +73,6 @@ class CardStackAdapter(
         }
 
         else if (spot.url.equals("") && spot.postText.equals("")){
-
-            Log.i("video url------->", "video chal rha h ")
 
             holder.imageContainer.visibility = View.GONE
             holder.textPostLayout.visibility = View.GONE
@@ -96,8 +93,6 @@ class CardStackAdapter(
 //            simpleExoPlayer.playWhenReady = true
         }
         else {
-
-            Log.i("posttext url------->", "bhai posttext Chl rha h ")
             holder.scrollView.scrollTo(0,0)
 
             holder.imageContainer.visibility = View.GONE

@@ -7,6 +7,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -90,10 +92,17 @@ class FilesPostActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+
+        if (data == null){
+            this@FilesPostActivity.finish()
+        }
+
         if (requestCode == REQUEST_CODE_CHOOSE && resultCode == Activity.RESULT_OK) {
 
-                mAdapter?.setData(Matisse.obtainResult(data), Matisse.obtainPathResult(data))
-                Log.e("OnActivityResult ", Matisse.obtainOriginalState(data).toString())
+            mAdapter?.setData(Matisse.obtainResult(data), Matisse.obtainPathResult(data))
+            Log.i("OnActivityResult ", Matisse.obtainOriginalState(data).toString())
+
+
         }
     }
 
@@ -104,6 +113,7 @@ class FilesPostActivity : AppCompatActivity() {
         fun setData(uris: List<Uri>?, paths: List<String>?) {
             mUris = uris
             mPaths = paths
+
             notifyDataSetChanged()
         }
 
@@ -117,9 +127,6 @@ class FilesPostActivity : AppCompatActivity() {
 
 //            holder.mUri.text = mUris!![position].toString()
 //            holder.mPath.text = mPaths!![position]
-
-            Log.i("data uri---->", mUris!![position].toString())
-
 
             if (mUris!![position].toString().contains("images")) {
                 holder.video.visibility = View.GONE
