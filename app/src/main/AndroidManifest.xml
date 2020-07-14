@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UserPostActivites.CameraPostActivity"></activity>
+        <activity android:name=".CommunityTabs.CommunityItemSelectedActivity"></activity>
+        <activity android:name=".UserPostActivites.CameraPostActivity" />
         <activity android:name=".UserPostActivites.FilesPostActivity" />
 
         <provider
@@ -28,7 +29,9 @@
         </provider>
 
         <activity android:name=".StoriesActivity" />
-        <activity android:name=".HomeActivity" />
+        <activity
+            android:name=".HomeActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode" />
         <activity android:name=".SignUpActivity" />
         <activity
             android:name=".MainActivity"

@@ -3,11 +3,13 @@ package com.leakyquill.bb84.Adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.exoplayer2.ExoPlayerFactory
@@ -49,18 +51,18 @@ class CardStackVideoAdapter(private var spots : List<Spot> = emptyList())
 
         var uri = Uri.parse(spot.video)
 
-        holder.simpleExoPlayerView.visibility = View.VISIBLE
-        var dataSourceFactory = DefaultHttpDataSourceFactory("exoplayer_video")
-        var extractorFactory = DefaultExtractorsFactory()
-        var mediaSource = ExtractorMediaSource(uri, dataSourceFactory, extractorFactory, null, null)
-        holder.simpleExoPlayerView.player = simpleExoPlayer
-        simpleExoPlayer.prepare(mediaSource)
+            var dataSourceFactory = DefaultHttpDataSourceFactory("exoplayer_video")
+            var extractorFactory = DefaultExtractorsFactory()
+            var mediaSource = ExtractorMediaSource(uri, dataSourceFactory, extractorFactory, null, null)
+            holder.simpleExoPlayerView.player = simpleExoPlayer
+            simpleExoPlayer.prepare(mediaSource)
 
 
         var commentAdapter = CommentAdapter(getComments())
         holder.recyclerView.layoutManager = LinearLayoutManager(mContext, LinearLayout.VERTICAL , false)
         holder.recyclerView.adapter = commentAdapter
     }
+
 
     override fun getItemCount(): Int {
         return spots.size
@@ -92,7 +94,7 @@ class CardStackVideoAdapter(private var spots : List<Spot> = emptyList())
 
     class ViewHolder(view : View) : RecyclerView.ViewHolder(view){
 
-        val name: TextView = view.findViewById(R.id.item_name)
+        var name: TextView = view.findViewById(R.id.item_name)
         var city: TextView = view.findViewById(R.id.item_city)
         var simpleExoPlayerView : SimpleExoPlayerView = view.findViewById(R.id.simpleExoplayerView)
         var recyclerView : RecyclerView = view.findViewById(R.id.commentRecyclerView)

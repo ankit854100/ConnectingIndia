@@ -27,7 +27,6 @@ class UserVideosFragment : Fragment(), CardStackListener{
     private lateinit var manager : CardStackLayoutManager
     private val adapter : CardStackVideoAdapter by lazy { CardStackVideoAdapter(createSpots()) }
     private lateinit var rewind : FloatingActionButton
-    private var counter = 0
 
 
 
@@ -60,8 +59,9 @@ class UserVideosFragment : Fragment(), CardStackListener{
     override fun onCardSwiped(direction: Direction) {
         Log.d("CardStackView", "onCardSwiped: p = ${manager.topPosition}, d = $direction")
 
-        if (manager.topPosition == adapter.itemCount - 1) {
-            paginate()
+        if (manager.topPosition == adapter.itemCount) {
+//            paginate()
+
             Log.i("Video set is Completed", "-----yes it is")
         }
     }
@@ -80,7 +80,6 @@ class UserVideosFragment : Fragment(), CardStackListener{
     }
 
     override fun onCardDisappeared(view: View, position: Int) {
-
     }
 
     private fun setupCardStackView() {

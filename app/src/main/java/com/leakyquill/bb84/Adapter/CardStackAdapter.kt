@@ -1,6 +1,7 @@
 package com.leakyquill.bb84.Adapter
 
 import android.annotation.SuppressLint
+import android.app.ProgressDialog
 import android.content.Context
 import android.net.Uri
 import android.util.Log
@@ -76,25 +77,38 @@ class CardStackAdapter(
 
             holder.imageContainer.visibility = View.GONE
             holder.textPostLayout.visibility = View.GONE
-            holder.simpleExoPLayerView.visibility = View.VISIBLE
-//            holder.videoContainer.visibility = View.VISIBLE
+//            holder.simpleExoPLayerView.visibility = View.VISIBLE
+            holder.videoContainer.visibility = View.VISIBLE
 
             holder.videoURL.text = spot.video
 
             var uri = Uri.parse(spot.video)
-//            holder.videoContainer.setVideoURI(uri)
+            holder.videoContainer.setVideoURI(uri)
 
 //            holder.videoContainer.setVideoPath(spot.video)
 
+//            holder.videoContainer.addOnAttachStateChangeListener(object : View.OnAttachStateChangeListener{
+//                override fun onViewDetachedFromWindow(v: View?) {
+//                    holder.videoContainer.stopPlayback()
+//                    Log.i("onDetach---->", " workring")
+//                }
+//
+//                override fun onViewAttachedToWindow(v: View?) {
+//                    holder.videoContainer.setVideoURI(uri)
+//                    holder.videoContainer.setOnPreparedListener {
+//                        it.start()
+//                    }
+//                }
 
+//            })
 
-            holder.simpleExoPLayerView.visibility = View.VISIBLE
-            var dataSourceFactory = DefaultHttpDataSourceFactory("exoplayer_video")
-            var extractorFactory = DefaultExtractorsFactory()
-            var mediaSource = ExtractorMediaSource(uri, dataSourceFactory, extractorFactory, null, null)
-            holder.simpleExoPLayerView.player = simpleExoPlayer
-            simpleExoPlayer.prepare(mediaSource)
-//            simpleExoPlayer.playWhenReady = true
+//            holder.simpleExoPLayerView.visibility = View.VISIBLE
+//            var dataSourceFactory = DefaultHttpDataSourceFactory("exoplayer_video")
+//            var extractorFactory = DefaultExtractorsFactory()
+//            var mediaSource = ExtractorMediaSource(uri, dataSourceFactory, extractorFactory, null, null)
+//            holder.simpleExoPLayerView.player = simpleExoPlayer
+//            simpleExoPlayer.prepare(mediaSource)
+////            simpleExoPlayer.playWhenReady = true
         }
         else {
             holder.scrollView.scrollTo(0,0)

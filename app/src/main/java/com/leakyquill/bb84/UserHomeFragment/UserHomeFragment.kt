@@ -78,21 +78,23 @@ class UserHomeFragment : Fragment(), CardStackListener{
 //        val textView = view.findViewById<TextView>(com.yuyakaido.android.cardstackview.R.id.item_name)
 //        val textView = view.findViewById<TextView>(R.id.item_name)
 //        Log.d("CardStackView", "onCardAppeared: ($position) ${textView.text}")
-//        val videoView  =view.findViewById<VideoView>(R.id.video_view)
-//        videoView.setOnPreparedListener {
-//            it.start()
-//        }
-//        videoView.setOnCompletionListener {
-//            it.start()
-//        }
+        val videoView =view.findViewById<VideoView>(R.id.video_view)
+        videoView.setOnPreparedListener {
+            it.start()
+        }
+        videoView.setOnCompletionListener {
+            it.start()
+        }
+
+
     }
 
     override fun onCardDisappeared(view: View, position: Int) {
 //        val textView = view.findViewById<TextView>(com.yuyakaido.android.cardstackview.R.id.item_name)
 //        val textView = view.findViewById<TextView>(R.id.item_name)
 //        Log.d("CardStackView", "onCardDisappeared: ($position) ${textView.text}")
-//        val videoView  =view.findViewById<VideoView>(R.id.video_view)
-//        videoView.stopPlayback()
+        val videoView  =view.findViewById<VideoView>(R.id.video_view)
+        videoView.stopPlayback()
 //        videoView.seekTo(0)
     }
 

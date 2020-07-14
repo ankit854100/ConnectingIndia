@@ -36,7 +36,7 @@ class StoriesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val view : View = inflater!!.inflate(R.layout.fragment_stories, container, false)
+        val view : View = inflater.inflate(R.layout.fragment_stories, container, false)
 
         storiesRecyclerView = view.findViewById(R.id.stories_recycler_view)
         storiesRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
