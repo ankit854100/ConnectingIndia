@@ -149,11 +149,11 @@ class UserHomeFragment : Fragment(), CardStackListener{
                 "imperdiet nec eros. Vivamus aliquam felis quam. Nunc sit amet ante nec sapien tristique iaculis id quis neque. " +
                 "Integer maximus neque sit amet iaculis tristique. Maecenas ac blandit elit. ", video = ""))
 
-        spots.add(Spot(name = "Big fat Bunny", city = "Jungle", url = "", postText = "", video = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"))
+//        spots.add(Spot(name = "Big fat Bunny", city = "Jungle", url = "", postText = "", video = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"))
         spots.add(Spot(name = "Brooklyn Bridge", city = "New York", url = "https://source.unsplash.com/THozNzxEP3g/600x800", postText = "", video = ""))
         spots.add(Spot(name = "Empire State Building", city = "New York", url = "https://source.unsplash.com/USrZRcRS2Lw/600x800", postText = "", video = ""))
         spots.add(Spot(name = "The statue of Liberty", city = "New York", url = "https://source.unsplash.com/PeFk7fzxTdk/600x800", postText = "", video = ""))
-        spots.add(Spot(name = "The open movie project", city = "Kyoto", url = "", postText = "", video = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"))
+//        spots.add(Spot(name = "The open movie project", city = "Kyoto", url = "", postText = "", video = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"))
         spots.add(Spot(name = "Louvre Museum", city = "Paris", url = "https://source.unsplash.com/LrMWHKqilUw/600x800", postText = "", video = ""))
         spots.add(Spot(name = "Eiffel Tower", city = "Paris", url = "https://source.unsplash.com/HN-5Z6AmxrM/600x800", postText = "", video = ""))
         spots.add(Spot(name = "Big Ben", city = "London", url = "https://source.unsplash.com/CdVAUADdqEc/600x800", postText = "", video = ""))

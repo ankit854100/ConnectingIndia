@@ -5,10 +5,214 @@
     android:layout_height="match_parent"
     tools:context=".CommunityTabs.FeedFragment">
 
-    <TextView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Feeds Fragment"
-        android:textSize="20dp"/>
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@drawable/sample1"
+                android:scaleType="centerCrop"
+                android:id="@+id/community_profile_picture"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/community_name"
+                android:layout_below="@+id/community_profile_picture"
+                android:text="Life with java"
+                android:layout_centerHorizontal="true"
+                android:textSize="25dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/top_container"
+                android:layout_below="@id/community_name"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PRIVATE GROUP"
+                    android:id="@+id/group_type"/>
+
+                <RelativeLayout
+                    android:layout_width="10dp"
+                    android:layout_height="20dp"
+                    android:gravity="center">
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="1dp"
+                        android:background="@color/colorAccent"
+                        />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="200"
+                    android:id="@+id/number_of_members"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MEMBERS"
+                    android:layout_marginLeft="5dp"/>
+
+            </LinearLayout>
+
+            <View  android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:background="@color/colorAccent"
+                android:layout_below="@+id/top_container"
+                android:id="@+id/top_view"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/middle_container"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorWhite"
+                android:layout_below="@+id/top_view">
+
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:padding="5dp"
+                   android:background="@color/colorWhite">
+
+                   <de.hdodenhof.circleimageview.CircleImageView
+                       android:layout_width="40dp"
+                       android:layout_height="40dp"
+                       android:src="@drawable/sample1"
+                       android:id="@+id/user_image"/>
+
+                   <RelativeLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_toRightOf="@+id/user_image"
+                       android:background="@drawable/image_background"
+                       android:layout_centerVertical="true"
+                       android:layout_marginLeft="5dp">
+
+                       <TextView
+                           android:layout_width="match_parent"
+                           android:layout_height="35dp"
+                           android:id="@+id/write_something"
+                           android:layout_marginStart="10dp"
+                           android:text="write something..."
+                           android:textSize="15dp"
+                           android:gravity="center_vertical"
+                           android:background="@drawable/transparent_background"/>
+
+
+                   </RelativeLayout>
+
+               </RelativeLayout>
+
+            </LinearLayout>
+
+            <View  android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lightGrey"
+                android:layout_marginBottom="3dp"
+                android:layout_below="@+id/middle_container"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/middle_container"
+                android:id="@+id/bottom_container"
+                android:background="@color/colorWhite"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_writing"
+                    android:id="@+id/text_image"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:tint="@color/colorPrimary"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="text"
+                    android:textSize="15dp"
+                    android:textColor="#000"
+                    android:layout_toRightOf="@+id/text_image"/>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_files"
+                    android:layout_toLeftOf="@+id/media"
+                    android:layout_marginRight="5dp"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/media"
+                    android:text="media"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#000"
+                    android:textSize="15dp"/>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_location"
+                    android:layout_toLeftOf="@+id/location"
+                    android:layout_marginRight="5dp"
+                    android:layout_centerVertical="true"
+                    android:tint="@color/colorPrimary"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="location"
+                    android:id="@+id/location"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="#000"
+                    android:textSize="15dp"/>
+
+            </RelativeLayout>
+
+            <View  android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:background="@color/colorAccent"
+                android:layout_below="@+id/bottom_container"
+                android:id="@+id/bottom_view"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/community_feeds_recycler_view"
+                android:layout_below="@+id/bottom_view"
+                android:background="@color/colorAccent"/>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>

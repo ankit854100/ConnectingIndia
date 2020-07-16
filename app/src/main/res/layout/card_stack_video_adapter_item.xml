@@ -69,12 +69,6 @@
                 android:layout_height="400dp"
                 android:id="@+id/simpleExoplayerView"/>
 
-            <VideoView
-                android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:id="@+id/video_view"
-                android:visibility="gone"/>
-
             <View  android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/lightGrey"

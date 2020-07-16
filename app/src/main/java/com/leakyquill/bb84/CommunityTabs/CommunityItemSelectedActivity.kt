@@ -2,6 +2,7 @@ package com.leakyquill.bb84.CommunityTabs
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.leakyquill.bb84.Adapter.CommunityTabAdapter
@@ -24,5 +25,13 @@ class CommunityItemSelectedActivity : AppCompatActivity() {
         viewPager.adapter = userPagerAdapter
 
         tabLayout.setupWithViewPager(viewPager)
+    }
+
+    override fun onBackPressed() {
+
+        this@CommunityItemSelectedActivity.finish()
+        Log.i("CommunityTabSelected: ", "is finished.")
+
+        super.onBackPressed()
     }
 }

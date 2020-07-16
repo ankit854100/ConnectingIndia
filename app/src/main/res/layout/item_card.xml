@@ -96,13 +96,6 @@
 
         </LinearLayout>
 
-
-            <com.google.android.exoplayer2.ui.SimpleExoPlayerView
-                android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:visibility="gone"
-                android:id="@+id/simpleExoplayerView"/>
-
         <VideoView
             android:layout_width="match_parent"
             android:layout_height="400dp"

@@ -10,14 +10,14 @@ import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.leakyquill.bb84.Adapter.CommunityItemSelectedAdapter
-import com.leakyquill.bb84.Model.Feeds
+import com.leakyquill.bb84.Model.Community
 
 import com.leakyquill.bb84.R
 
 
 class CommunityFragment : Fragment() {
 
-    private val feedsAdapter : CommunityItemSelectedAdapter by lazy { CommunityItemSelectedAdapter(getFeeds()) }
+    private val communityItemSelectedAdapter : CommunityItemSelectedAdapter by lazy { CommunityItemSelectedAdapter(getFeeds()) }
     private lateinit var feedsRecyclerView: RecyclerView
 
     @SuppressLint("WrongConstant")
@@ -30,23 +30,23 @@ class CommunityFragment : Fragment() {
 
         feedsRecyclerView = view.findViewById(R.id.feeds_recycler_view)
         feedsRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
-        feedsRecyclerView.adapter = feedsAdapter
+        feedsRecyclerView.adapter = communityItemSelectedAdapter
 
         return view
     }
 
-    fun getFeeds(): ArrayList<Feeds> {
+    fun getFeeds(): ArrayList<Community> {
 
-        var feedList = ArrayList<Feeds>()
+        var feedList = ArrayList<Community>()
 
-        feedList.add(Feeds(displayPicture = "",communityName = "python", mutualFriends = 12, followers = 120))
-        feedList.add(Feeds(displayPicture = "",communityName = "HummingBird", mutualFriends = 10, followers = 680))
-        feedList.add(Feeds(displayPicture = "",communityName = "ruby", mutualFriends = 10, followers = 300))
-        feedList.add(Feeds(displayPicture = "",communityName = "kotlin", mutualFriends = 0, followers = 20))
-        feedList.add(Feeds(displayPicture = "",communityName = "android", mutualFriends = 13, followers = 420))
-        feedList.add(Feeds(displayPicture = "",communityName = "java", mutualFriends = 18, followers = 220))
-        feedList.add(Feeds(displayPicture = "",communityName = "Title", mutualFriends = 1, followers = 420))
-        feedList.add(Feeds(displayPicture = "",communityName = "c++", mutualFriends = 19, followers = 120))
+        feedList.add(Community(displayPicture = "",communityName = "python", mutualFriends = 12, followers = 120))
+        feedList.add(Community(displayPicture = "",communityName = "HummingBird", mutualFriends = 10, followers = 680))
+        feedList.add(Community(displayPicture = "",communityName = "ruby", mutualFriends = 10, followers = 300))
+        feedList.add(Community(displayPicture = "",communityName = "kotlin", mutualFriends = 0, followers = 20))
+        feedList.add(Community(displayPicture = "",communityName = "android", mutualFriends = 13, followers = 420))
+        feedList.add(Community(displayPicture = "",communityName = "java", mutualFriends = 18, followers = 220))
+        feedList.add(Community(displayPicture = "",communityName = "Title", mutualFriends = 1, followers = 420))
+        feedList.add(Community(displayPicture = "",communityName = "c++", mutualFriends = 19, followers = 120))
 
         return feedList
     }

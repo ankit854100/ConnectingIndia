@@ -11,10 +11,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.leakyquill.bb84.CommunityTabs.CommunityItemSelectedActivity
-import com.leakyquill.bb84.Model.Feeds
+import com.leakyquill.bb84.Model.Community
 import com.leakyquill.bb84.R
 
-class CommunityItemSelectedAdapter(private var feeds : List<Feeds> = emptyList()) : RecyclerView.Adapter<CommunityItemSelectedAdapter.ViewHolder>(){
+class CommunityItemSelectedAdapter(private var feeds : List<Community> = emptyList()) : RecyclerView.Adapter<CommunityItemSelectedAdapter.ViewHolder>(){
 
     private lateinit var mContext: Context
     private lateinit var intent: Intent

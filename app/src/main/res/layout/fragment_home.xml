@@ -64,7 +64,7 @@
         app:tabTextColor="@color/colorAccent"
         app:tabSelectedTextColor="#000"
         android:background="@color/colorWhite"
-        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"/>
+        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget" />
 
     <androidx.viewpager.widget.ViewPager
         android:layout_width="match_parent"

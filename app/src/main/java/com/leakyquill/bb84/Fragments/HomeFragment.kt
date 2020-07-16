@@ -35,6 +35,7 @@ class HomeFragment : Fragment() {
         userPagerAdapter = HomeViewPagerAdapter(childFragmentManager)
 
         viewPager.adapter = userPagerAdapter
+        viewPager.offscreenPageLimit = 6
 
         tabLayout.setupWithViewPager(viewPager)
 
