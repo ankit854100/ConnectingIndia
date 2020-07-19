@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
-import com.leakyquill.bb84.Adapter.HomeViewPagerAdapter
 import com.leakyquill.bb84.R
 import com.google.android.material.tabs.TabLayout
+import com.leakyquill.bb84.Adapter.HomeViewPagerAdapter
 
 
 class HomeFragment : Fragment() {

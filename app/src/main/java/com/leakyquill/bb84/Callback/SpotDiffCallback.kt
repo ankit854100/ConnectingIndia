@@ -1,11 +1,12 @@
 package com.leakyquill.bb84.Callback
 
 import androidx.recyclerview.widget.DiffUtil
+import com.leakyquill.bb84.Model.Photos
 import com.leakyquill.bb84.Model.Spot
 
 class SpotDiffCallback(
-    private val old: List<Spot>,
-    private val new: List<Spot>
+    private val old: List<Photos>,
+    private val new: List<Photos>
 ) : DiffUtil.Callback() {
 
     override fun getOldListSize(): Int {

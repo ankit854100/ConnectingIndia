@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DiffUtil
+import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.leakyquill.bb84.Adapter.CardStackAdapter
 import com.leakyquill.bb84.Adapter.CardStackVideoAdapter
 import com.leakyquill.bb84.Callback.SpotDiffCallback
 import com.leakyquill.bb84.Model.Spot
@@ -25,8 +25,9 @@ class UserVideosFragment : Fragment(), CardStackListener{
 
     private lateinit var cardStackView: CardStackView
     private lateinit var manager : CardStackLayoutManager
-    private val adapter : CardStackVideoAdapter by lazy { CardStackVideoAdapter(createSpots()) }
+    private lateinit var adapter : CardStackVideoAdapter
     private lateinit var rewind : FloatingActionButton
+
 
 
 
@@ -40,6 +41,8 @@ class UserVideosFragment : Fragment(), CardStackListener{
         rewind = view.findViewById(R.id.rewind)
 
         cardStackView = view.findViewById(R.id.card_stack_view_videos)
+
+        adapter = context?.let { CardStackVideoAdapter(it, createSpots()) }!!
         manager = CardStackLayoutManager(context,this)
 
 
@@ -76,10 +79,14 @@ class UserVideosFragment : Fragment(), CardStackListener{
     }
 
     override fun onCardAppeared(view: View, position: Int) {
-
+        val playerView : PlayerView = view.findViewById(R.id.simpleExoPlayerView)
+        playerView.visibility = View.VISIBLE
     }
 
     override fun onCardDisappeared(view: View, position: Int) {
+        val playerView : PlayerView = view.findViewById(R.id.simpleExoPlayerView)
+        playerView.visibility = View.GONE
+
     }
 
     private fun setupCardStackView() {
@@ -88,7 +95,7 @@ class UserVideosFragment : Fragment(), CardStackListener{
 
     private fun initialize() {
         manager.setStackFrom(StackFrom.None)
-        manager.setVisibleCount(3)
+        manager.setVisibleCount(1)
         manager.setTranslationInterval(8.0f)
         manager.setScaleInterval(0.95f)
         manager.setSwipeThreshold(0.3f)
@@ -107,14 +114,14 @@ class UserVideosFragment : Fragment(), CardStackListener{
         }
     }
 
-    private fun paginate() {
-        val old = adapter.getSpots()
-        val new = old.plus(createSpots())
-        val callback = SpotDiffCallback(old, new)
-        val result = DiffUtil.calculateDiff(callback)
-        adapter.setSpots(new)
-        result.dispatchUpdatesTo(adapter)
-    }
+//    private fun paginate() {
+//        val old = adapter.getSpots()
+//        val new = old.plus(createSpots())
+//        val callback = SpotDiffCallback(old, new)
+//        val result = DiffUtil.calculateDiff(callback)
+//        adapter.setSpots(new)
+//        result.dispatchUpdatesTo(adapter)
+//    }
 
 
 
@@ -128,5 +135,6 @@ class UserVideosFragment : Fragment(), CardStackListener{
 
         return spots
     }
+
 
 }

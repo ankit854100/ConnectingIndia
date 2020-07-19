@@ -68,8 +68,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:id="@+id/image_container"
-            android:padding="10dp"
-            android:visibility="gone">
+            android:padding="10dp">
 
             <com.borjabravo.readmoretextview.ReadMoreTextView
                 android:id="@+id/read_more_caption"

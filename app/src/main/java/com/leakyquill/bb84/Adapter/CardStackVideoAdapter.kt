@@ -3,66 +3,70 @@ package com.leakyquill.bb84.Adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.net.Uri
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.exoplayer2.ExoPlayerFactory
 import com.google.android.exoplayer2.SimpleExoPlayer
-import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory
-import com.google.android.exoplayer2.source.ExtractorMediaSource
-import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection
-import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
-import com.google.android.exoplayer2.ui.SimpleExoPlayerView
-import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
-import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
+import com.google.android.exoplayer2.source.MediaSource
+import com.google.android.exoplayer2.source.ProgressiveMediaSource
+import com.google.android.exoplayer2.ui.PlayerView
+import com.google.android.exoplayer2.upstream.DataSource
+import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.leakyquill.bb84.Model.Comments
 import com.leakyquill.bb84.Model.Spot
 import com.leakyquill.bb84.R
 
-class CardStackVideoAdapter(private var spots : List<Spot> = emptyList())
+class CardStackVideoAdapter(private var mContext: Context, private var spots : List<Spot> = emptyList())
     : RecyclerView.Adapter<CardStackVideoAdapter.ViewHolder>(){
 
-    private lateinit var mContext: Context
-    var bandwidthMeter  = DefaultBandwidthMeter()
-    var trackSelector = DefaultTrackSelector(AdaptiveTrackSelection.Factory(bandwidthMeter))
-    private lateinit var simpleExoPlayer : SimpleExoPlayer
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-
-        mContext = parent.context
-        simpleExoPlayer = ExoPlayerFactory.newSimpleInstance(mContext, trackSelector)
 
         return ViewHolder(inflater.inflate(R.layout.card_stack_video_adapter_item, parent, false))
     }
 
     @SuppressLint("WrongConstant")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        var spot = spots[position]
+        val spot = spots[position]
 
         holder.name.text = spot.name
         holder.city.text = spot.city
 
-        var uri = Uri.parse(spot.video)
+        val uri = Uri.parse(spot.video)
 
-            var dataSourceFactory = DefaultHttpDataSourceFactory("exoplayer_video")
-            var extractorFactory = DefaultExtractorsFactory()
-            var mediaSource = ExtractorMediaSource(uri, dataSourceFactory, extractorFactory, null, null)
-            holder.simpleExoPlayerView.player = simpleExoPlayer
-            simpleExoPlayer.prepare(mediaSource)
+        holder.initializePlayer(mContext, uri)
+//        holder.player?.playWhenReady = true
 
+//        holder.play.setOnClickListener {
+//            if (holder.playWhenReady == false){
+//                holder.initializePlayer(mContext, uri)
+//                holder.player?.playWhenReady = true
+//            }
+//            else{
+//                holder.releasePlayer()
+//            }
+//        }
 
-        var commentAdapter = CommentAdapter(getComments())
+        val commentAdapter = CommentAdapter(getComments())
         holder.recyclerView.layoutManager = LinearLayoutManager(mContext, LinearLayout.VERTICAL , false)
         holder.recyclerView.adapter = commentAdapter
     }
 
+    override fun onViewAttachedToWindow(holder: ViewHolder) {
+        holder.player?.playWhenReady = true
+        holder.playWhenReady = true
+        super.onViewAttachedToWindow(holder)
+    }
+    override fun onViewDetachedFromWindow(holder: ViewHolder) {
+
+        holder.releasePlayer()
+        super.onViewDetachedFromWindow(holder)
+    }
 
     override fun getItemCount(): Int {
         return spots.size
@@ -96,7 +100,40 @@ class CardStackVideoAdapter(private var spots : List<Spot> = emptyList())
 
         var name: TextView = view.findViewById(R.id.item_name)
         var city: TextView = view.findViewById(R.id.item_city)
-        var simpleExoPlayerView : SimpleExoPlayerView = view.findViewById(R.id.simpleExoplayerView)
+        var playerView : PlayerView = view.findViewById(R.id.simpleExoPlayerView)
         var recyclerView : RecyclerView = view.findViewById(R.id.commentRecyclerView)
+        var play : View = view.findViewById(R.id.play_view)
+        var playWhenReady = false
+
+        var player : SimpleExoPlayer? = null
+
+        fun initializePlayer(mContext : Context, uri: Uri){
+//            playerView.visibility = View.VISIBLE
+            player = SimpleExoPlayer.Builder(mContext).build()
+            playerView.player = player
+
+            val mediaSource : MediaSource = this.buildMediaSource(uri, mContext)!!
+
+            player!!.prepare(mediaSource, false, false)
+            playWhenReady = true
+        }
+
+        fun releasePlayer(){
+//            player?.release()
+            player?.playWhenReady = false
+//            playerView.visibility = View.GONE
+            playWhenReady = false
+        }
+
+        fun buildMediaSource(uri: Uri, mContext: Context): MediaSource? {
+            val dataSourceFactory: DataSource.Factory =
+                DefaultDataSourceFactory(mContext, "exoplayer-codelab")
+            return ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(uri)
+        }
+
     }
+
+
+
+
 }
