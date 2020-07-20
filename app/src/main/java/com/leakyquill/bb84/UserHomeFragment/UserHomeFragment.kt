@@ -8,26 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
 import android.widget.Toast
-import android.widget.VideoView
 import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.DiffUtil
 import com.leakyquill.bb84.Adapter.CardStackAdapter
-import com.leakyquill.bb84.Callback.SpotDiffCallback
-import com.leakyquill.bb84.Model.Spot
 
 import com.leakyquill.bb84.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.leakyquill.bb84.Interface.JsonPlaceHolderApi
 import com.leakyquill.bb84.Model.Photos
 import com.yuyakaido.android.cardstackview.*
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
-/**
- * A simple [Fragment] subclass.
- */
 class UserHomeFragment : Fragment(), CardStackListener {
 
     private lateinit var cardStackView: CardStackView

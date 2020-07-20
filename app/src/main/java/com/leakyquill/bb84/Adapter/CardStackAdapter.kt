@@ -9,13 +9,16 @@ import android.widget.*
 import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.leakyquill.bb84.Model.Comments
-import com.leakyquill.bb84.R
 import com.borjabravo.readmoretextview.ReadMoreTextView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.model.GlideUrl
+import com.bumptech.glide.load.model.LazyHeaders
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.leakyquill.bb84.Model.Comments
 import com.leakyquill.bb84.Model.Photos
+import com.leakyquill.bb84.R
+
 
 class CardStackAdapter(
     private var spots: List<Photos> = emptyList()
@@ -42,8 +45,14 @@ class CardStackAdapter(
 
         holder.imageCaption.text = spot.title
 
+        val url = GlideUrl(
+            spot.url, LazyHeaders.Builder()
+                .addHeader("User-Agent", "your-user-agent")
+                .build()
+        )
+
         Glide.with(holder.image)
-            .load(spot.thumbnailUrl)
+            .load(url)
             .transform(CenterCrop(), RoundedCorners(20))
             .into(holder.image)
 //
