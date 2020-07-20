@@ -62,10 +62,64 @@ class UserHomeFragment : Fragment(), CardStackListener {
 
         jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi::class.java)
 
-        adapter = CardStackAdapter(getPhotos())
-        manager = CardStackLayoutManager(context, this)
+        val photos = ArrayList<Photos>()
 
-        setupCardStackView()
+        val call: Call<List<Photos>> = jsonPlaceHolderApi.getPhotos()
+
+        call.enqueue(object : Callback<List<Photos>> {
+            override fun onFailure(call: Call<List<Photos>>, t: Throwable) {
+                Toast.makeText(context, "Could not load photos", Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(call: Call<List<Photos>>, response: Response<List<Photos>>) {
+                if (!response.isSuccessful) {
+                    Toast.makeText(
+                        context,
+                        "Could not load photos" + response.code(),
+                        Toast.LENGTH_LONG
+                    ).show()
+
+                    return
+                }
+
+                val photo: List<Photos>? = response.body()
+
+                if (photo != null) {
+                    photos.clear()
+                    for (p in photo) {
+//                        val albumId = p.albumId
+//                        val id = p.id
+//                        val title = p.title
+//                        val url = p.url
+//                        val thumbnailUrl = p.thumbnailUrl
+
+                        Log.i("id--->", p.id.toString())
+
+                        photos.add(
+                            Photos(
+                                albumId = p.albumId,
+                                id = p.id,
+                                title = p.title,
+                                url = p.url,
+                                thumbnailUrl = p.thumbnailUrl
+                            )
+                        )
+                    }
+                }
+
+                adapter = CardStackAdapter(photos)
+                manager = CardStackLayoutManager(context, this@UserHomeFragment)
+
+                setupCardStackView()
+
+            }
+
+        })
+
+//        adapter = CardStackAdapter(getPhotos())
+//        manager = CardStackLayoutManager(context, this)
+//
+//        setupCardStackView()
 
         rewind.setOnClickListener {
             cardStackView.rewind()
@@ -81,9 +135,9 @@ class UserHomeFragment : Fragment(), CardStackListener {
     override fun onCardSwiped(direction: Direction) {
         Log.d("CardStackView", "onCardSwiped: p = ${manager.topPosition}, d = $direction")
 
-        if (manager.topPosition == adapter.itemCount - 1) {
-            paginate()
-        }
+//        if (manager.topPosition == adapter.itemCount - 1) {
+//           paginate()
+//        }
     }
 
     override fun onCardRewound() {
@@ -96,27 +150,11 @@ class UserHomeFragment : Fragment(), CardStackListener {
     }
 
     override fun onCardAppeared(view: View, position: Int) {
-//        val textView = view.findViewById<TextView>(com.yuyakaido.android.cardstackview.R.id.item_name)
-//        val textView = view.findViewById<TextView>(R.id.item_name)
-//        Log.d("CardStackView", "onCardAppeared: ($position) ${textView.text}")
-        val videoView = view.findViewById<VideoView>(R.id.video_view)
-        videoView.setOnPreparedListener {
-            it.start()
-        }
-        videoView.setOnCompletionListener {
-            it.start()
-        }
-
 
     }
 
     override fun onCardDisappeared(view: View, position: Int) {
-//        val textView = view.findViewById<TextView>(com.yuyakaido.android.cardstackview.R.id.item_name)
-//        val textView = view.findViewById<TextView>(R.id.item_name)
-//        Log.d("CardStackView", "onCardDisappeared: ($position) ${textView.text}")
-        val videoView = view.findViewById<VideoView>(R.id.video_view)
-        videoView.stopPlayback()
-//        videoView.seekTo(0)
+
     }
 
     private fun setupCardStackView() {
@@ -144,17 +182,17 @@ class UserHomeFragment : Fragment(), CardStackListener {
         }
     }
 
-    private fun paginate() {
-        val old = adapter.getSpots()
-        val new = old.plus(getPhotos())
-        val callback = SpotDiffCallback(old, new)
-        val result = DiffUtil.calculateDiff(callback)
-        adapter.setSpots(new)
-        result.dispatchUpdatesTo(adapter)
-    }
+//    private fun paginate() {
+//        val old = adapter.getSpots()
+//        val new = old.plus(getPhotos())
+//        val callback = SpotDiffCallback(old, new)
+//        val result = DiffUtil.calculateDiff(callback)
+//        adapter.setSpots(new)
+//        result.dispatchUpdatesTo(adapter)
+//    }
 
 
-    private fun createSpots(): List<Spot> {
+ /*   private fun createSpots(): List<Spot> {
         val spots = ArrayList<Spot>()
 
 
@@ -266,61 +304,61 @@ class UserHomeFragment : Fragment(), CardStackListener {
             )
         )
         return spots
-    }
+    }*/
 
-    private fun getPhotos(): List<Photos> {
-
-        val photos = ArrayList<Photos>()
-
-        val call: Call<List<Photos>> = jsonPlaceHolderApi.getPhotos()
-
-        call.enqueue(object : Callback<List<Photos>> {
-            override fun onFailure(call: Call<List<Photos>>, t: Throwable) {
-                Toast.makeText(context, "Could not load photos", Toast.LENGTH_LONG).show()
-            }
-
-            override fun onResponse(call: Call<List<Photos>>, response: Response<List<Photos>>) {
-                if (!response.isSuccessful) {
-                    Toast.makeText(
-                        context,
-                        "Could not load photos" + response.code(),
-                        Toast.LENGTH_LONG
-                    ).show()
-
-                    return
-                }
-
-                val photo: List<Photos>? = response.body()
-
-                if (photo != null) {
-                    photos.clear()
-                    for (p in photo) {
-//                        val albumId = p.albumId
-//                        val id = p.id
-//                        val title = p.title
-//                        val url = p.url
-//                        val thumbnailUrl = p.thumbnailUrl
-
-                        Log.i("id--->", p.id.toString())
-
-                        photos.add(
-                            Photos(
-                                albumId = p.albumId,
-                                id = p.id,
-                                title = p.title,
-                                url = p.url,
-                                thumbnailUrl = p.thumbnailUrl
-                            )
-                        )
-                    }
-                }
-
-            }
-
-        })
-
-        Log.i("photos.size--->", photos.size.toString())
-        return photos
-    }
+//    private fun getPhotos(): List<Photos> {
+//
+//        val photos = ArrayList<Photos>()
+//
+//        val call: Call<List<Photos>> = jsonPlaceHolderApi.getPhotos()
+//
+//        call.enqueue(object : Callback<List<Photos>> {
+//            override fun onFailure(call: Call<List<Photos>>, t: Throwable) {
+//                Toast.makeText(context, "Could not load photos", Toast.LENGTH_LONG).show()
+//            }
+//
+//            override fun onResponse(call: Call<List<Photos>>, response: Response<List<Photos>>) {
+//                if (!response.isSuccessful) {
+//                    Toast.makeText(
+//                        context,
+//                        "Could not load photos" + response.code(),
+//                        Toast.LENGTH_LONG
+//                    ).show()
+//
+//                    return
+//                }
+//
+//                val photo: List<Photos>? = response.body()
+//
+//                if (photo != null) {
+//                    photos.clear()
+//                    for (p in photo) {
+////                        val albumId = p.albumId
+////                        val id = p.id
+////                        val title = p.title
+////                        val url = p.url
+////                        val thumbnailUrl = p.thumbnailUrl
+//
+//                        Log.i("id--->", p.id.toString())
+//
+//                        photos.add(
+//                            Photos(
+//                                albumId = p.albumId,
+//                                id = p.id,
+//                                title = p.title,
+//                                url = p.url,
+//                                thumbnailUrl = p.thumbnailUrl
+//                            )
+//                        )
+//                    }
+//                }
+//
+//            }
+//
+//        })
+//
+//        Log.i("photos.size--->", photos.size.toString())
+//        return photos
+//    }
 
 }
