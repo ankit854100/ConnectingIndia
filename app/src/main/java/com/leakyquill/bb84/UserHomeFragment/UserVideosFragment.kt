@@ -2,21 +2,19 @@ package com.leakyquill.bb84.UserHomeFragment
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.DiffUtil
 import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.leakyquill.bb84.Adapter.CardStackVideoAdapter
-import com.leakyquill.bb84.Callback.SpotDiffCallback
 import com.leakyquill.bb84.Model.Spot
-
 import com.leakyquill.bb84.R
 import com.yuyakaido.android.cardstackview.*
+
 
 /**
  * A simple [Fragment] subclass.
@@ -24,12 +22,9 @@ import com.yuyakaido.android.cardstackview.*
 class UserVideosFragment : Fragment(), CardStackListener{
 
     private lateinit var cardStackView: CardStackView
-    private lateinit var manager : CardStackLayoutManager
-    private lateinit var adapter : CardStackVideoAdapter
+    private var manager : CardStackLayoutManager? = null
+    private var adapter : CardStackVideoAdapter? = null
     private lateinit var rewind : FloatingActionButton
-
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,11 +37,11 @@ class UserVideosFragment : Fragment(), CardStackListener{
 
         cardStackView = view.findViewById(R.id.card_stack_view_videos)
 
-        adapter = context?.let { CardStackVideoAdapter(it, createSpots()) }!!
-        manager = CardStackLayoutManager(context,this)
-
-
-        setupCardStackView()
+//        adapter = context?.let { CardStackVideoAdapter(it, createSpots()) }!!
+//        manager = CardStackLayoutManager(context,this)
+//
+//
+//        setupCardStackView()
 
         rewind.setOnClickListener {
             cardStackView.rewind()
@@ -60,9 +55,9 @@ class UserVideosFragment : Fragment(), CardStackListener{
     }
 
     override fun onCardSwiped(direction: Direction) {
-        Log.d("CardStackView", "onCardSwiped: p = ${manager.topPosition}, d = $direction")
+        Log.d("CardStackView", "onCardSwiped: p = ${manager?.topPosition}, d = $direction")
 
-        if (manager.topPosition == adapter.itemCount) {
+        if (manager?.topPosition == adapter?.itemCount) {
 //            paginate()
 
             Log.i("Video set is Completed", "-----yes it is")
@@ -70,22 +65,24 @@ class UserVideosFragment : Fragment(), CardStackListener{
     }
 
     override fun onCardRewound() {
-        Log.d("CardStackView", "onCardRewound: ${manager.topPosition}")
+        Log.d("CardStackView", "onCardRewound: ${manager?.topPosition}")
 
     }
 
     override fun onCardCanceled() {
-        Log.d("CardStackView", "onCardCanceled: ${manager.topPosition}")
+        Log.d("CardStackView", "onCardCanceled: ${manager?.topPosition}")
     }
 
     override fun onCardAppeared(view: View, position: Int) {
         val playerView : PlayerView = view.findViewById(R.id.simpleExoPlayerView)
         playerView.visibility = View.VISIBLE
+        adapter?.viewHolder?.playWhenReady = true
     }
 
     override fun onCardDisappeared(view: View, position: Int) {
         val playerView : PlayerView = view.findViewById(R.id.simpleExoPlayerView)
         playerView.visibility = View.GONE
+        adapter?.viewHolder?.releasePlayer()
 
     }
 
@@ -94,17 +91,17 @@ class UserVideosFragment : Fragment(), CardStackListener{
     }
 
     private fun initialize() {
-        manager.setStackFrom(StackFrom.None)
-        manager.setVisibleCount(1)
-        manager.setTranslationInterval(8.0f)
-        manager.setScaleInterval(0.95f)
-        manager.setSwipeThreshold(0.3f)
-        manager.setMaxDegree(20.0f)
-        manager.setDirections(Direction.HORIZONTAL)
-        manager.setCanScrollHorizontal(true)
-        manager.setCanScrollVertical(false)
-        manager.setSwipeableMethod(SwipeableMethod.AutomaticAndManual)
-        manager.setOverlayInterpolator(LinearInterpolator())
+        manager?.setStackFrom(StackFrom.None)
+        manager?.setVisibleCount(1)
+        manager?.setTranslationInterval(8.0f)
+        manager?.setScaleInterval(0.95f)
+        manager?.setSwipeThreshold(0.3f)
+        manager?.setMaxDegree(20.0f)
+        manager?.setDirections(Direction.HORIZONTAL)
+        manager?.setCanScrollHorizontal(true)
+        manager?.setCanScrollVertical(false)
+        manager?.setSwipeableMethod(SwipeableMethod.AutomaticAndManual)
+        manager?.setOverlayInterpolator(LinearInterpolator())
         cardStackView.layoutManager = manager
         cardStackView.adapter = adapter
         cardStackView.itemAnimator.apply {
@@ -134,6 +131,45 @@ class UserVideosFragment : Fragment(), CardStackListener{
         spots.add(Spot(name = "The open movie project", city = "Kyoto", url = "", postText = "", video = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"))
 
         return spots
+    }
+
+
+//
+//    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+//
+//        super.setUserVisibleHint(isVisibleToUser)
+//
+//        if (isVisibleToUser){
+//            Log.i("UserVideoFragment---->",  " is resumed but not visible")
+//        }
+//        else{
+//            Log.i("UserVideoFragment---->",  " is not visible")
+//        }
+//
+//    }
+
+    override fun onResume() {
+        super.onResume()
+
+        Log.i("UserVideoAdapter--->" , " is visible now")
+
+        adapter = context?.let { CardStackVideoAdapter(it, createSpots()) }!!
+        manager = CardStackLayoutManager(context,this)
+
+
+        setupCardStackView()
+
+        adapter?.viewHolder?.player?.playWhenReady
+        adapter?.viewHolder?.playWhenReady = true
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        Log.i("The fragment------>", " is not visible to user")
+        adapter?.viewHolder?.releasePlayer()
+        adapter?.viewHolder?.player?.release()
     }
 
 

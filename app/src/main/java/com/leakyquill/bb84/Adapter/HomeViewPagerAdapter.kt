@@ -7,7 +7,10 @@ import com.leakyquill.bb84.UserHomeFragment.UserHomeFragment
 import com.leakyquill.bb84.UserHomeFragment.UserOthersFragment
 import com.leakyquill.bb84.UserHomeFragment.UserVideosFragment
 
-class HomeViewPagerAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm) {
+class HomeViewPagerAdapter(
+    fm: FragmentManager,
+    behaviorResumeOnlyCurrentFragment: Int
+) : FragmentPagerAdapter(fm, behaviorResumeOnlyCurrentFragment) {
     override fun getItem(position: Int): Fragment {
         return when(position){
             0 -> UserHomeFragment()

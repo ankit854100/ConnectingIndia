@@ -78,13 +78,6 @@ class UserHomeFragment : Fragment(), CardStackListener {
                 if (photo != null) {
                     photos.clear()
                     for (p in photo) {
-//                        val albumId = p.albumId
-//                        val id = p.id
-//                        val title = p.title
-//                        val url = p.url
-//                        val thumbnailUrl = p.thumbnailUrl
-
-                        Log.i("id--->", p.id.toString())
 
                         photos.add(
                             Photos(

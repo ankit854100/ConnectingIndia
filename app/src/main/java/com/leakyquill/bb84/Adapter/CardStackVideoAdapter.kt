@@ -23,6 +23,7 @@ import com.leakyquill.bb84.R
 class CardStackVideoAdapter(private var mContext: Context, private var spots : List<Spot> = emptyList())
     : RecyclerView.Adapter<CardStackVideoAdapter.ViewHolder>(){
 
+    var viewHolder : ViewHolder? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -34,23 +35,14 @@ class CardStackVideoAdapter(private var mContext: Context, private var spots : L
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val spot = spots[position]
 
-        holder.name.text = spot.name
-        holder.city.text = spot.city
+//        holder.name.text = spot.name
+//        holder.city.text = spot.city
 
         val uri = Uri.parse(spot.video)
 
-        holder.initializePlayer(mContext, uri)
-//        holder.player?.playWhenReady = true
+        viewHolder = holder
 
-//        holder.play.setOnClickListener {
-//            if (holder.playWhenReady == false){
-//                holder.initializePlayer(mContext, uri)
-//                holder.player?.playWhenReady = true
-//            }
-//            else{
-//                holder.releasePlayer()
-//            }
-//        }
+        holder.initializePlayer(mContext, uri)
 
         val commentAdapter = CommentAdapter(getComments())
         holder.recyclerView.layoutManager = LinearLayoutManager(mContext, LinearLayout.VERTICAL , false)
@@ -119,9 +111,7 @@ class CardStackVideoAdapter(private var mContext: Context, private var spots : L
         }
 
         fun releasePlayer(){
-//            player?.release()
             player?.playWhenReady = false
-//            playerView.visibility = View.GONE
             playWhenReady = false
         }
 

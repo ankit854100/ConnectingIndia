@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
 import androidx.viewpager.widget.ViewPager
 import com.leakyquill.bb84.R
 import com.google.android.material.tabs.TabLayout
@@ -32,7 +33,7 @@ class HomeFragment : Fragment() {
         tabLayout = homeFragmentView.findViewById(R.id.tabLayout)
         viewPager = homeFragmentView.findViewById(R.id.viewPager)
 
-        userPagerAdapter = HomeViewPagerAdapter(childFragmentManager)
+        userPagerAdapter = HomeViewPagerAdapter(childFragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT)
 
         viewPager.adapter = userPagerAdapter
         viewPager.offscreenPageLimit = 6
